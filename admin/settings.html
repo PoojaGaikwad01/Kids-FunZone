@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>System Settings | Kids FunZone Admin</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/admin.css">
+</head>
+<body class="admin-page">
+
+  <div class="adm-overlay" id="admOverlay"></div>
+  <div class="adm-layout">
+    <!-- Sidebar -->
+    <aside class="adm-sidebar" id="admSidebar">
+      <div class="adm-sidebar-logo">
+        <span class="adm-logo-text">Kids <span>FunZone</span></span>
+        <span class="adm-logo-badge">Admin</span>
+      </div>
+      <nav class="adm-nav">
+        <span class="adm-nav-section-label">Operations</span>
+        <a href="reports.html" class="adm-nav-link"><i class="bi bi-file-earmark-bar-graph"></i><span>Reports</span></a>
+        <a href="customers.html" class="adm-nav-link"><i class="bi bi-people"></i><span>Customers</span></a>
+        <a href="billing.html" class="adm-nav-link"><i class="bi bi-receipt-cutoff"></i><span>Billing</span></a>
+        <div class="adm-nav-divider"></div>
+        <span class="adm-nav-section-label">Insights</span>
+        <a href="analytics.html" class="adm-nav-link"><i class="bi bi-graph-up-arrow"></i><span>Analytics</span></a>
+        <div class="adm-nav-divider"></div>
+        <span class="adm-nav-section-label">System</span>
+        <a href="settings.html" class="adm-nav-link active"><i class="bi bi-gear"></i><span>Settings</span></a>
+        <a href="../index.html" class="adm-nav-link"><i class="bi bi-house"></i><span>Public Site</span></a>
+      </nav>
+      <div class="adm-sidebar-footer">
+        <div class="adm-user-card">
+          <div class="adm-avatar">AD</div>
+          <div class="adm-user-info">
+            <div class="adm-user-name">Admin Staff</div>
+            <div class="adm-user-role">Administrator</div>
+          </div>
+          <button class="adm-logout-btn" onclick="adminLogout()" title="Logout">
+            <i class="bi bi-box-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="adm-main">
+      <header class="adm-topbar">
+        <button class="adm-toggle-btn" id="sidebarToggle"><i class="bi bi-list"></i></button>
+        <div class="adm-topbar-title">Settings Console</div>
+      </header>
+
+      <div class="adm-content">
+        <div class="row g-4">
+          <!-- Nav Tabs Left Column -->
+          <div class="col-lg-3">
+            <div class="adm-card p-3">
+              <div class="adm-settings-nav" id="settingsTabs" role="tablist">
+                <button class="adm-settings-tab active" id="profile-tab" data-bs-toggle="tab" data-bs-target="#tab-profile" type="button" role="tab">
+                  <i class="bi bi-person-circle"></i> Profile Details
+                </button>
+                <button class="adm-settings-tab" id="system-tab" data-bs-toggle="tab" data-bs-target="#tab-system" type="button" role="tab">
+                  <i class="bi bi-sliders"></i> Play Zone Setup
+                </button>
+                <button class="adm-settings-tab" id="users-tab" data-bs-toggle="tab" data-bs-target="#tab-users" type="button" role="tab">
+                  <i class="bi bi-people"></i> User Management
+                </button>
+                <button class="adm-settings-tab" id="footer-tab" data-bs-toggle="tab" data-bs-target="#tab-footer" type="button" role="tab">
+                  <i class="bi bi-layout-text-window-reverse"></i> Footer Management
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab Contents Right Column -->
+          <div class="col-lg-9">
+            <div class="tab-content" id="settingsTabContent">
+              
+              <!-- Profile Tab -->
+              <div class="tab-pane fade show active" id="tab-profile" role="tabpanel">
+                <div class="adm-card">
+                  <div class="adm-card-header">
+                    <div class="adm-card-title">Update Profile Details</div>
+                  </div>
+                  <div class="adm-card-body">
+                    <form onsubmit="event.preventDefault(); alert('Profile details updated successfully! (Mock Action)')">
+                      <div class="row g-3 mb-4">
+                        <div class="col-md-6">
+                          <label class="adm-form-label">Full Name</label>
+                          <input type="text" class="adm-form-control" value="Admin Staff">
+                        </div>
+                        <div class="col-md-6">
+                          <label class="adm-form-label">Email Address</label>
+                          <input type="email" class="adm-form-control" value="admin@kidsfunzone.com">
+                        </div>
+                        <div class="col-md-6">
+                          <label class="adm-form-label">New Password</label>
+                          <div class="position-relative">
+                            <input type="password" class="adm-form-control toggle-password-input" placeholder="••••••••" style="padding-right: 44px;">
+                            <button type="button" class="btn p-0 border-0 bg-transparent position-absolute top-50 end-0 translate-middle-y me-3 adm-text-secondary toggle-password-btn" aria-label="Toggle password visibility" style="line-height: 0; z-index: 5;">
+                              <i class="bi bi-eye-fill"></i>
+                            </button>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <label class="adm-form-label">Confirm Password</label>
+                          <div class="position-relative">
+                            <input type="password" class="adm-form-control toggle-password-input" placeholder="••••••••" style="padding-right: 44px;">
+                            <button type="button" class="btn p-0 border-0 bg-transparent position-absolute top-50 end-0 translate-middle-y me-3 adm-text-secondary toggle-password-btn" aria-label="Toggle password visibility" style="line-height: 0; z-index: 5;">
+                              <i class="bi bi-eye-fill"></i>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                      <button type="submit" class="adm-btn adm-btn-primary">Save Profile</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+
+              <!-- System Configuration Tab -->
+              <div class="tab-pane fade" id="tab-system" role="tabpanel">
+                <div class="adm-card">
+                  <div class="adm-card-header">
+                    <div class="adm-card-title">System Operating Configurations</div>
+                  </div>
+                  <div class="adm-card-body">
+                    <form onsubmit="event.preventDefault(); alert('Play Zone system rules saved successfully! (Mock Action)')">
+                      <div class="row g-3 mb-4">
+                        <div class="col-md-6">
+                          <label class="adm-form-label">Weekday Rate / Hour (₹)</label>
+                          <input type="number" class="adm-form-control" value="250">
+                        </div>
+                        <div class="col-md-6">
+                          <label class="adm-form-label">Weekend Rate / Hour (₹)</label>
+                          <input type="number" class="adm-form-control" value="350">
+                        </div>
+                        <div class="col-md-6">
+                          <label class="adm-form-label">Overtime Rate per Min (₹)</label>
+                          <input type="number" class="adm-form-control" value="5">
+                        </div>
+                        <div class="col-md-6">
+                          <label class="adm-form-label">Grace Period (Minutes)</label>
+                          <input type="number" class="adm-form-control" value="10">
+                        </div>
+                      </div>
+                      <button type="submit" class="adm-btn adm-btn-primary">Save Play Zone Rules</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+
+              <!-- User Management Tab -->
+              <div class="tab-pane fade" id="tab-users" role="tabpanel">
+                <div class="adm-card">
+                  <div class="adm-card-header">
+                    <div>
+                      <div class="adm-card-title">Authorized Users & Roles</div>
+                      <div class="adm-card-subtitle">Manage login access profiles</div>
+                    </div>
+                    <button class="adm-btn adm-btn-secondary adm-btn-sm" onclick="alert('Opening Add User dialog... (Mock Action)')">
+                      <i class="bi bi-plus-lg"></i> Add Staff
+                    </button>
+                  </div>
+                  <div class="adm-table-wrap">
+                    <table class="adm-table">
+                      <thead>
+                        <tr>
+                          <th>Username</th>
+                          <th>Role</th>
+                          <th>Status</th>
+                          <th>Last Active</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><span class="adm-fw-600">admin</span></td>
+                          <td><span class="adm-badge adm-badge-accent">Administrator</span></td>
+                          <td><span class="adm-badge adm-badge-success">Active</span></td>
+                          <td class="adm-text-secondary">Just Now</td>
+                          <td class="adm-text-muted small">System Owner</td>
+                        </tr>
+                        <tr>
+                          <td><span class="adm-fw-600">pooja_g</span></td>
+                          <td><span class="adm-badge adm-badge-sky">Staff Supervisor</span></td>
+                          <td><span class="adm-badge adm-badge-success">Active</span></td>
+                          <td class="adm-text-secondary">14/07/2026</td>
+                          <td>
+                            <button class="adm-btn adm-btn-danger adm-btn-sm" onclick="alert('Revoking access for pooja_g... (Mock Action)')">
+                              Revoke
+                            </button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Footer Management Tab -->
+              <div class="tab-pane fade" id="tab-footer" role="tabpanel">
+                <div class="adm-card">
+                  <div class="adm-card-header">
+                    <div>
+                      <div class="adm-card-title">Website Footer Content</div>
+                      <div class="adm-card-subtitle">Changes apply instantly across all public pages</div>
+                    </div>
+                  </div>
+                  <div class="adm-card-body">
+                    <form id="footerSettingsForm">
+                      <div class="row g-3 mb-4">
+                        <div class="col-12">
+                          <label class="adm-form-label">Footer Tagline</label>
+                          <textarea class="adm-form-control" id="footerTaglineInput" rows="2"></textarea>
+                        </div>
+                        <div class="col-md-4">
+                          <label class="adm-form-label"><i class="bi bi-facebook"></i> Facebook URL</label>
+                          <input type="text" class="adm-form-control" id="footerFacebookInput">
+                        </div>
+                        <div class="col-md-4">
+                          <label class="adm-form-label"><i class="bi bi-instagram"></i> Instagram URL</label>
+                          <input type="text" class="adm-form-control" id="footerInstagramInput">
+                        </div>
+                        <div class="col-md-4">
+                          <label class="adm-form-label"><i class="bi bi-youtube"></i> YouTube URL</label>
+                          <input type="text" class="adm-form-control" id="footerYoutubeInput">
+                        </div>
+                        <div class="col-md-6">
+                          <label class="adm-form-label">Address</label>
+                          <input type="text" class="adm-form-control" id="footerAddressInput">
+                        </div>
+                        <div class="col-md-3">
+                          <label class="adm-form-label">Phone</label>
+                          <input type="text" class="adm-form-control" id="footerPhoneInput">
+                        </div>
+                        <div class="col-md-3">
+                          <label class="adm-form-label">Email</label>
+                          <input type="email" class="adm-form-control" id="footerEmailInput">
+                        </div>
+                      </div>
+                      <button type="submit" class="adm-btn adm-btn-primary">Save Footer Content</button>
+                      <button type="button" class="adm-btn adm-btn-secondary" id="footerResetBtn">Reset to Default</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div class="site-credit-bar">&copy; 2026 <span class="text-primary">Kids</span> <span class="text-secondary">FunZone</span>. All rights reserved. | Developed and maintained by <a href="https://www.idyllicservices.in/" target="_blank" rel="noopener" class="credit-brand">Idyllic Services Pvt. Ltd.</a></div>
+
+  <button type="button" id="backToTopBtn" class="back-to-top" aria-label="Back to top">
+    <i class="bi bi-arrow-up"></i>
+  </button>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/admin-auth-guard.js"></script>
+  <script src="../assets/js/admin.js"></script>
+  <script>
+    const sidebar = document.getElementById('admSidebar');
+    const overlay = document.getElementById('admOverlay');
+    document.getElementById('sidebarToggle').addEventListener('click', () => {
+      sidebar.classList.toggle('open'); overlay.classList.toggle('active');
+    });
+    overlay.addEventListener('click', () => {
+      sidebar.classList.remove('open'); overlay.classList.remove('active');
+    });
+  </script>
+</body>
+</html>

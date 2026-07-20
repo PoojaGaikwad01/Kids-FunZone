@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Billing & Rates Configuration | Kids FunZone Admin</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+  <meta name="description" content="Configure Play Zone pricing rates, overtime rules, and view daily billing summaries.">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/admin.css">
+</head>
+<body class="admin-page">
+
+  <!-- Mobile Overlay -->
+  <div class="adm-overlay" id="admOverlay"></div>
+
+  <div class="adm-layout">
+
+    <!-- Sidebar Navigation -->
+    <aside class="adm-sidebar" id="admSidebar">
+      <div class="adm-sidebar-logo">
+        <span class="adm-logo-text">Kids <span>FunZone</span></span>
+        <span class="adm-logo-badge">Admin</span>
+      </div>
+
+      <nav class="adm-nav">
+        <span class="adm-nav-section-label">Operations</span>
+
+        <a href="reports.html" class="adm-nav-link">
+          <i class="bi bi-file-earmark-bar-graph"></i>
+          <span>Reports</span>
+        </a>
+        <a href="customers.html" class="adm-nav-link">
+          <i class="bi bi-people"></i>
+          <span>Customers</span>
+        </a>
+        <a href="billing.html" class="adm-nav-link active">
+          <i class="bi bi-receipt-cutoff"></i>
+          <span>Billing</span>
+        </a>
+
+        <div class="adm-nav-divider"></div>
+        <span class="adm-nav-section-label">Insights</span>
+
+        <a href="analytics.html" class="adm-nav-link">
+          <i class="bi bi-graph-up-arrow"></i>
+          <span>Analytics</span>
+        </a>
+
+        <div class="adm-nav-divider"></div>
+        <span class="adm-nav-section-label">System</span>
+
+        <a href="settings.html" class="adm-nav-link">
+          <i class="bi bi-gear"></i>
+          <span>Settings</span>
+        </a>
+        <a href="../index.html" class="adm-nav-link">
+          <i class="bi bi-house"></i>
+          <span>Public Site</span>
+        </a>
+      </nav>
+
+      <div class="adm-sidebar-footer">
+        <div class="adm-user-card" id="userMenuTrigger">
+          <div class="adm-avatar">AD</div>
+          <div class="adm-user-info">
+            <div class="adm-user-name">Admin Staff</div>
+            <div class="adm-user-role">Administrator</div>
+          </div>
+          <button class="adm-logout-btn" title="Logout" onclick="adminLogout()">
+            <i class="bi bi-box-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="adm-main" id="admMain">
+
+      <!-- Top Bar -->
+      <header class="adm-topbar">
+        <button class="adm-toggle-btn" id="sidebarToggle" aria-label="Toggle Sidebar">
+          <i class="bi bi-list"></i>
+        </button>
+        <div class="adm-topbar-title">
+          Pricing Rules &amp; Billing Rates Configuration
+        </div>
+        <div class="adm-topbar-actions">
+          <a href="reports.html" class="adm-btn adm-btn-secondary"><i class="bi bi-arrow-left"></i> Back to Reports</a>
+          <a href="customers.html?openModal=true" class="adm-btn adm-btn-primary">
+            <i class="bi bi-person-plus"></i> Register &amp; Check-In Child
+          </a>
+        </div>
+      </header>
+
+      <!-- Content Area -->
+      <div class="adm-content">
+        <div class="row g-4">
+          
+          <!-- Play Zone Pricing Rules Form -->
+          <div class="col-lg-7">
+            <div class="adm-card">
+              <div class="adm-card-header">
+                <div>
+                  <div class="adm-card-title"><i class="bi bi-sliders me-2 adm-text-accent"></i>Play Zone Pricing &amp; Rate Rules</div>
+                  <div class="adm-card-subtitle">Configure standard hourly tickets, weekend rates, and overstay buffer rules</div>
+                </div>
+              </div>
+              <div class="adm-card-body p-4">
+                <form id="pricingRulesForm">
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <div class="adm-form-group">
+                        <label class="adm-form-label">Weekday Hourly Rate (₹)</label>
+                        <input type="number" class="adm-form-control" id="rateWeekday" value="250" required min="50">
+                        <div class="adm-form-hint">Standard Mon–Fri rate per child per hour</div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="adm-form-group">
+                        <label class="adm-form-label">Weekend Hourly Rate (₹)</label>
+                        <input type="number" class="adm-form-control" id="rateWeekend" value="350" required min="50">
+                        <div class="adm-form-hint">Peak Saturday &amp; Sunday hourly rate</div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="adm-form-group">
+                        <label class="adm-form-label">Overtime Rate per Minute (₹)</label>
+                        <input type="number" class="adm-form-control" id="rateOvertime" value="5" required min="1">
+                        <div class="adm-form-hint">Charged automatically after grace period</div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="adm-form-group">
+                        <label class="adm-form-label">Grace Period Buffer (Minutes)</label>
+                        <input type="number" class="adm-form-control" id="graceBuffer" value="10" required min="0">
+                        <div class="adm-form-hint">Free extra time allowed before charging overtime</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="mt-4 pt-3 border-top d-flex justify-content-end gap-2">
+                    <button type="reset" class="adm-btn adm-btn-secondary">Reset Defaults</button>
+                    <button type="submit" class="adm-btn adm-btn-primary">
+                      <i class="bi bi-check2-circle"></i> Save Pricing Rules
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <!-- Billing & Payment Method Summary -->
+          <div class="col-lg-5">
+            <div class="adm-card mb-4">
+              <div class="adm-card-header">
+                <div>
+                  <div class="adm-card-title"><i class="bi bi-wallet2 me-2 adm-text-emerald"></i>Today's Collection Summary</div>
+                  <div class="adm-card-subtitle">Real-time revenue collected across all payment channels</div>
+                </div>
+              </div>
+              <div class="adm-card-body p-4">
+                <div class="d-flex align-items-center justify-content-between p-3 mb-3" style="background:rgba(16,185,129,0.06);border-radius:12px;border:1px solid rgba(16,185,129,0.15);">
+                  <span class="adm-fw-600 text-dark">Total Revenue Collected Today</span>
+                  <span class="adm-fw-700 adm-text-emerald" style="font-size:1.35rem;">₹4,850.00</span>
+                </div>
+
+                <div class="d-flex flex-column gap-3">
+                  <div class="d-flex justify-content-between align-items-center pb-2 border-bottom">
+                    <span class="adm-text-secondary"><i class="bi bi-cash-stack me-2 adm-text-accent"></i>Cash Collections</span>
+                    <span class="adm-fw-700">₹1,800.00</span>
+                  </div>
+                  <div class="d-flex justify-content-between align-items-center pb-2 border-bottom">
+                    <span class="adm-text-secondary"><i class="bi bi-credit-card-fill me-2 adm-text-purple"></i>Credit / Debit Card</span>
+                    <span class="adm-fw-700">₹1,500.00</span>
+                  </div>
+                  <div class="d-flex justify-content-between align-items-center pb-2 border-bottom">
+                    <span class="adm-text-secondary"><i class="bi bi-qr-code-scan me-2 adm-text-sky"></i>UPI &amp; QR Payments</span>
+                    <span class="adm-fw-700">₹950.00</span>
+                  </div>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <span class="adm-text-secondary"><i class="bi bi-wallet2 me-2 adm-text-amber"></i>Loyalty Wallet Deductions</span>
+                    <span class="adm-fw-700">₹600.00</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tax & Invoice Settings -->
+            <div class="adm-card p-4">
+              <div class="d-flex align-items-center gap-3">
+                <div class="adm-icon-box" style="width:44px;height:44px;border-radius:10px;background:rgba(37,99,235,0.08);color:var(--adm-accent);display:flex;align-items:center;justify-content:center;font-size:1.2rem;">
+                  <i class="bi bi-receipt"></i>
+                </div>
+                <div>
+                  <div class="adm-fw-700">Tax Invoice Receipt Printing</div>
+                  <small class="adm-text-secondary">Itemized bills and tax receipts are generated automatically upon Check-Out and inside each Child's Profile.</small>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div><!-- /adm-content -->
+
+    </main>
+  </div>
+
+  <!-- Add Customer Modal -->
+  <div class="modal fade adm-modal" id="addCustomerModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"><i class="bi bi-person-plus-fill me-2 adm-text-accent"></i>Register &amp; Check-In Child</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form id="addCustomerForm">
+            <!-- CHILD DETAILS FIRST -->
+            <p class="adm-text-secondary" style="font-size:0.78rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-bottom:16px;">
+              <i class="bi bi-emoji-smile me-1 adm-text-accent"></i> Child Details
+            </p>
+            <div class="row g-3 mb-4">
+              <div class="col-md-6">
+                <label class="adm-form-label">Child's First Name</label>
+                <input type="text" class="adm-form-control" id="childFirstName" required placeholder="e.g. Vivaan">
+              </div>
+              <div class="col-md-6">
+                <label class="adm-form-label">Child's Last Name</label>
+                <input type="text" class="adm-form-control" id="childLastName" required placeholder="e.g. Sharma">
+              </div>
+              <div class="col-md-6">
+                <label class="adm-form-label">Child's Date of Birth</label>
+                <input type="date" class="adm-form-control" id="childDob" required>
+              </div>
+              <div class="col-md-6">
+                <label class="adm-form-label">Planned Play Duration (Check-In Session)</label>
+                <select class="adm-form-select" id="childPlayDuration">
+                  <option value="60" selected>1 Hour — ₹250 (Standard Check-In)</option>
+                  <option value="90">1.5 Hours — ₹350</option>
+                  <option value="120">2 Hours — ₹450</option>
+                  <option value="180">3 Hours — ₹600</option>
+                  <option value="0">Registration Only (No Immediate Check-In)</option>
+                </select>
+              </div>
+            </div>
+
+            <div style="height:1px;background:var(--adm-border);margin-bottom:20px;"></div>
+
+            <!-- PARENT DETAILS SECOND -->
+            <p class="adm-text-secondary" style="font-size:0.78rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-bottom:16px;">
+              <i class="bi bi-person-circle me-1 adm-text-accent"></i> Parent Details
+            </p>
+            <div class="row g-3 mb-4">
+              <div class="col-md-6">
+                <label class="adm-form-label">Parent's First Name</label>
+                <input type="text" class="adm-form-control" id="custFirstName" required placeholder="e.g. Priya">
+              </div>
+              <div class="col-md-6">
+                <label class="adm-form-label">Parent's Last Name</label>
+                <input type="text" class="adm-form-control" id="custLastName" required placeholder="e.g. Sharma">
+              </div>
+              <div class="col-md-6">
+                <label class="adm-form-label">Phone Number</label>
+                <input type="tel" class="adm-form-control" id="custPhone" required placeholder="10-digit mobile">
+              </div>
+              <div class="col-md-6">
+                <label class="adm-form-label">Initial Wallet Deposit (₹)</label>
+                <input type="number" class="adm-form-control" id="custWallet" value="0" min="0">
+              </div>
+            </div>
+
+            <button type="submit" class="adm-btn adm-btn-primary w-100" style="justify-content:center; padding:12px;">
+              <i class="bi bi-person-check-fill me-1"></i> Register &amp; Check-In Child
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Check-In Modal -->
+  <div class="modal fade adm-modal" id="checkinModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"><i class="bi bi-person-check me-2 adm-text-accent"></i>Check-In Child to Play Zone</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form id="adminCheckInForm">
+            <div class="adm-form-group">
+              <label class="adm-form-label">Select Registered Child</label>
+              <select class="adm-form-select" id="checkinChildSelect" required>
+                <!-- Populated dynamically -->
+              </select>
+            </div>
+            <div class="adm-form-group">
+              <label class="adm-form-label">Planned Play Duration</label>
+              <select class="adm-form-select" id="checkinDurationSelect" required>
+                <option value="60">1 Hour — ₹250</option>
+                <option value="90">1.5 Hours — ₹350</option>
+                <option value="120">2 Hours — ₹450</option>
+                <option value="180">3 Hours — ₹600</option>
+              </select>
+            </div>
+            <button type="submit" class="adm-btn adm-btn-primary w-100" style="justify-content:center; padding:12px;">
+              <i class="bi bi-person-check"></i> Confirm Check-In
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="site-credit-bar">&copy; 2026 <span class="text-primary">Kids</span> <span class="text-secondary">FunZone</span>. All rights reserved. | Developed and maintained by <a href="https://www.idyllicservices.in/" target="_blank" rel="noopener" class="credit-brand">Idyllic Services Pvt. Ltd.</a></div>
+
+  <button type="button" id="backToTopBtn" class="back-to-top" aria-label="Back to top">
+    <i class="bi bi-arrow-up"></i>
+  </button>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/admin-auth-guard.js"></script>
+  <script src="../assets/js/admin.js"></script>
+  <script>
+    // Sidebar toggle
+    const sidebar = document.getElementById('admSidebar');
+    const overlay = document.getElementById('admOverlay');
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    if (sidebarToggle && sidebar && overlay) {
+      sidebarToggle.addEventListener('click', () => {
+        sidebar.classList.toggle('open'); overlay.classList.toggle('active');
+      });
+      overlay.addEventListener('click', () => {
+        sidebar.classList.remove('open'); overlay.classList.remove('active');
+      });
+    }
+
+    const form = document.getElementById('pricingRulesForm');
+    if (form) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('Play Zone pricing rules saved successfully!');
+      });
+    }
+  </script>
+</body>
+</html>

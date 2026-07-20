@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analytics Reports | Kids FunZone Admin</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/admin.css">
+</head>
+<body class="admin-page">
+
+  <div class="adm-overlay" id="admOverlay"></div>
+  <div class="adm-layout">
+    <!-- Sidebar -->
+    <aside class="adm-sidebar" id="admSidebar">
+      <div class="adm-sidebar-logo">
+        <span class="adm-logo-text">Kids <span>FunZone</span></span>
+        <span class="adm-logo-badge">Admin</span>
+      </div>
+      <nav class="adm-nav">
+        <span class="adm-nav-section-label">Operations</span>
+        <a href="reports.html" class="adm-nav-link"><i class="bi bi-file-earmark-bar-graph"></i><span>Reports</span></a>
+        <a href="customers.html" class="adm-nav-link"><i class="bi bi-people"></i><span>Customers</span></a>
+        <a href="billing.html" class="adm-nav-link"><i class="bi bi-receipt-cutoff"></i><span>Billing</span></a>
+        <div class="adm-nav-divider"></div>
+        <span class="adm-nav-section-label">Insights</span>
+        <a href="analytics.html" class="adm-nav-link active"><i class="bi bi-graph-up-arrow"></i><span>Analytics</span></a>
+        <div class="adm-nav-divider"></div>
+        <span class="adm-nav-section-label">System</span>
+        <a href="settings.html" class="adm-nav-link"><i class="bi bi-gear"></i><span>Settings</span></a>
+        <a href="../index.html" class="adm-nav-link"><i class="bi bi-house"></i><span>Public Site</span></a>
+      </nav>
+      <div class="adm-sidebar-footer">
+        <div class="adm-user-card">
+          <div class="adm-avatar">AD</div>
+          <div class="adm-user-info">
+            <div class="adm-user-name">Admin Staff</div>
+            <div class="adm-user-role">Administrator</div>
+          </div>
+          <button class="adm-logout-btn" onclick="adminLogout()" title="Logout">
+            <i class="bi bi-box-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="adm-main">
+      <header class="adm-topbar">
+        <button class="adm-toggle-btn" id="sidebarToggle"><i class="bi bi-list"></i></button>
+        <div class="adm-topbar-title">Daily Attendance &amp; Monthly Income Analytics</div>
+      </header>
+
+      <div class="adm-content">
+
+        <!-- Top Summary Cards Row -->
+        <div class="row g-3 mb-4">
+          <div class="col-md-4">
+            <div class="adm-stat-card" data-color="indigo">
+              <div class="adm-stat-icon"><i class="bi bi-person-walking"></i></div>
+              <div class="adm-stat-body">
+                <div class="adm-stat-label">Daily Check-Ins (Today)</div>
+                <div class="adm-stat-value" id="statVisitors">0</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="adm-stat-card" data-color="amber">
+              <div class="adm-stat-icon"><i class="bi bi-box-arrow-right"></i></div>
+              <div class="adm-stat-body">
+                <div class="adm-stat-label">Daily Check-Outs (Today)</div>
+                <div class="adm-stat-value" id="statCheckouts">0</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="adm-stat-card" data-color="emerald">
+              <div class="adm-stat-icon"><i class="bi bi-currency-rupee"></i></div>
+              <div class="adm-stat-body">
+                <div class="adm-stat-label">This Month Income</div>
+                <div class="adm-stat-value" id="statMonthIncome">₹0</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 1. Daily Check-Ins & Check-Outs Table -->
+        <div class="adm-card mb-4">
+          <div class="adm-card-header">
+            <div>
+              <div class="adm-card-title"><i class="bi bi-calendar-check me-2 adm-text-accent"></i>Daily Check-Ins &amp; Check-Outs Summary</div>
+              <div class="adm-card-subtitle">Daily count of visitor entries and exits for the current week</div>
+            </div>
+          </div>
+          <div class="adm-table-wrap">
+            <table class="adm-table">
+              <thead>
+                <tr>
+                  <th>Day</th>
+                  <th>Total Check-Ins</th>
+                  <th>Total Check-Outs</th>
+                  <th>Currently Active / Net</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="adm-fw-600">Monday</td>
+                  <td>18</td>
+                  <td>17</td>
+                  <td>1</td>
+                  <td><span class="adm-badge adm-badge-success">Completed</span></td>
+                </tr>
+                <tr>
+                  <td class="adm-fw-600">Tuesday</td>
+                  <td>22</td>
+                  <td>20</td>
+                  <td>2</td>
+                  <td><span class="adm-badge adm-badge-success">Completed</span></td>
+                </tr>
+                <tr>
+                  <td class="adm-fw-600">Wednesday</td>
+                  <td>15</td>
+                  <td>14</td>
+                  <td>1</td>
+                  <td><span class="adm-badge adm-badge-success">Completed</span></td>
+                </tr>
+                <tr>
+                  <td class="adm-fw-600">Thursday</td>
+                  <td>30</td>
+                  <td>28</td>
+                  <td>2</td>
+                  <td><span class="adm-badge adm-badge-success">Completed</span></td>
+                </tr>
+                <tr>
+                  <td class="adm-fw-600">Friday</td>
+                  <td>28</td>
+                  <td>26</td>
+                  <td>2</td>
+                  <td><span class="adm-badge adm-badge-success">Completed</span></td>
+                </tr>
+                <tr>
+                  <td class="adm-fw-600">Saturday (Weekend Peak)</td>
+                  <td>55</td>
+                  <td>52</td>
+                  <td>3</td>
+                  <td><span class="adm-badge adm-badge-success">Completed</span></td>
+                </tr>
+                <tr>
+                  <td class="adm-fw-600">Sunday (Today)</td>
+                  <td>24</td>
+                  <td>12</td>
+                  <td>12 Active</td>
+                  <td><span class="adm-badge adm-badge-live">In Progress</span></td>
+                </tr>
+                <tr style="background: rgba(255,255,255,0.04); font-weight: 700;">
+                  <td>Weekly Total</td>
+                  <td class="adm-text-accent">192 Check-Ins</td>
+                  <td class="adm-text-amber">169 Check-Outs</td>
+                  <td>23 Active</td>
+                  <td><span class="adm-badge adm-badge-accent">Weekly Summary</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 2. Monthly Complete Income Details Table -->
+        <div class="adm-card">
+          <div class="adm-card-header">
+            <div>
+              <div class="adm-card-title"><i class="bi bi-cash-stack me-2 adm-text-emerald"></i>Monthly Complete Income Details</div>
+              <div class="adm-card-subtitle">Comprehensive breakdown of all revenue sources by month (in INR)</div>
+            </div>
+          </div>
+          <div class="adm-table-wrap">
+            <table class="adm-table">
+              <thead>
+                <tr>
+                  <th>Month</th>
+                  <th>Play Zone Tickets</th>
+                  <th>Membership Passes</th>
+                  <th>Birthday Parties</th>
+                  <th>Loyalty Recharges</th>
+                  <th>Total Monthly Income</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="adm-fw-600">January 2026</td>
+                  <td>₹85,000</td>
+                  <td>₹45,000</td>
+                  <td>₹65,000</td>
+                  <td>₹15,000</td>
+                  <td class="adm-fw-700">₹2,10,000.00</td>
+                </tr>
+                <tr>
+                  <td class="adm-fw-600">February 2026</td>
+                  <td>₹95,000</td>
+                  <td>₹50,000</td>
+                  <td>₹75,000</td>
+                  <td>₹20,000</td>
+                  <td class="adm-fw-700">₹2,40,000.00</td>
+                </tr>
+                <tr>
+                  <td class="adm-fw-600">March 2026</td>
+                  <td>₹80,000</td>
+                  <td>₹40,000</td>
+                  <td>₹60,000</td>
+                  <td>₹15,000</td>
+                  <td class="adm-fw-700">₹1,95,000.00</td>
+                </tr>
+                <tr>
+                  <td class="adm-fw-600">April 2026</td>
+                  <td>₹1,20,000</td>
+                  <td>₹65,000</td>
+                  <td>₹1,00,000</td>
+                  <td>₹25,000</td>
+                  <td class="adm-fw-700">₹3,10,000.00</td>
+                </tr>
+                <tr>
+                  <td class="adm-fw-600">May 2026</td>
+                  <td>₹1,10,000</td>
+                  <td>₹60,000</td>
+                  <td>₹90,000</td>
+                  <td>₹25,000</td>
+                  <td class="adm-fw-700">₹2,85,000.00</td>
+                </tr>
+                <tr>
+                  <td class="adm-fw-600">June 2026</td>
+                  <td>₹1,40,000</td>
+                  <td>₹75,000</td>
+                  <td>₹1,05,000</td>
+                  <td>₹30,000</td>
+                  <td class="adm-fw-700">₹3,50,000.00</td>
+                </tr>
+                <tr>
+                  <td class="adm-fw-600">July 2026 (Current)</td>
+                  <td>₹1,30,000</td>
+                  <td>₹70,000</td>
+                  <td>₹95,000</td>
+                  <td>₹25,000</td>
+                  <td class="adm-fw-700 adm-text-emerald">₹3,20,000.00</td>
+                </tr>
+                <tr style="background: rgba(255,255,255,0.04); font-weight: 700;">
+                  <td>Total YTD Income</td>
+                  <td>₹7,55,000</td>
+                  <td>₹4,05,000</td>
+                  <td>₹5,90,000</td>
+                  <td>₹1,55,000</td>
+                  <td class="adm-text-accent" style="font-size: 1.05rem;">₹19,10,000.00</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <div class="site-credit-bar">&copy; 2026 <span class="text-primary">Kids</span> <span class="text-secondary">FunZone</span>. All rights reserved. | Developed and maintained by <a href="https://www.idyllicservices.in/" target="_blank" rel="noopener" class="credit-brand">Idyllic Services Pvt. Ltd.</a></div>
+
+  <button type="button" id="backToTopBtn" class="back-to-top" aria-label="Back to top">
+    <i class="bi bi-arrow-up"></i>
+  </button>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/admin-auth-guard.js"></script>
+  <script src="../assets/js/admin.js"></script>
+  <script>
+    const sidebar = document.getElementById('admSidebar');
+    const overlay = document.getElementById('admOverlay');
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    if (sidebarToggle && sidebar && overlay) {
+      sidebarToggle.addEventListener('click', () => {
+        sidebar.classList.toggle('open'); overlay.classList.toggle('active');
+      });
+      overlay.addEventListener('click', () => {
+        sidebar.classList.remove('open'); overlay.classList.remove('active');
+      });
+    }
+  </script>
+</body>
+</html>

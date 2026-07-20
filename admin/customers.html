@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Management | Kids FunZone Admin</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+  <meta name="description" content="Manage customers, parents, and children registered at Kids FunZone.">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/admin.css">
+</head>
+<body class="admin-page">
+
+  <div class="adm-overlay" id="admOverlay"></div>
+
+  <div class="adm-layout">
+    <!-- Sidebar -->
+    <aside class="adm-sidebar" id="admSidebar">
+      <div class="adm-sidebar-logo">
+        <span class="adm-logo-text">Kids <span>FunZone</span></span>
+        <span class="adm-logo-badge">Admin</span>
+      </div>
+      <nav class="adm-nav">
+        <span class="adm-nav-section-label">Operations</span>
+        <a href="reports.html" class="adm-nav-link"><i class="bi bi-file-earmark-bar-graph"></i><span>Reports</span></a>
+        <a href="customers.html" class="adm-nav-link active"><i class="bi bi-people"></i><span>Customers</span></a>
+        <a href="billing.html" class="adm-nav-link"><i class="bi bi-receipt-cutoff"></i><span>Billing</span></a>
+        <div class="adm-nav-divider"></div>
+        <span class="adm-nav-section-label">Insights</span>
+        <a href="analytics.html" class="adm-nav-link"><i class="bi bi-graph-up-arrow"></i><span>Analytics</span></a>
+        <div class="adm-nav-divider"></div>
+        <span class="adm-nav-section-label">System</span>
+        <a href="settings.html" class="adm-nav-link"><i class="bi bi-gear"></i><span>Settings</span></a>
+        <a href="../index.html" class="adm-nav-link"><i class="bi bi-house"></i><span>Public Site</span></a>
+      </nav>
+      <div class="adm-sidebar-footer">
+        <div class="adm-user-card">
+          <div class="adm-avatar">AD</div>
+          <div class="adm-user-info">
+            <div class="adm-user-name">Admin Staff</div>
+            <div class="adm-user-role">Administrator</div>
+          </div>
+          <button class="adm-logout-btn" onclick="adminLogout()" title="Logout">
+            <i class="bi bi-box-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="adm-main" id="admMain">
+      <header class="adm-topbar">
+        <button class="adm-toggle-btn" id="sidebarToggle"><i class="bi bi-list"></i></button>
+        <div class="adm-topbar-title">
+          Customers Directory
+          <span id="customerCount">— registered families</span>
+        </div>
+        <div class="adm-topbar-actions">
+          <button class="adm-btn adm-btn-primary" data-bs-toggle="modal" data-bs-target="#addCustomerModal">
+            <i class="bi bi-person-plus"></i> Register &amp; Check-In Child
+          </button>
+        </div>
+      </header>
+
+      <div class="adm-content">
+        <div class="adm-card">
+          <div class="adm-filter-bar">
+            <div class="adm-search">
+              <i class="bi bi-search"></i>
+              <input type="text" class="table-search-input" data-table-target="customersTable" placeholder="Search children, parents, phone…">
+            </div>
+            <div class="d-flex gap-2">
+              <button class="adm-btn adm-btn-secondary adm-btn-sm" onclick="location.reload()">
+                <i class="bi bi-arrow-clockwise"></i> Refresh
+              </button>
+            </div>
+          </div>
+          <div class="adm-table-wrap">
+            <table class="adm-table" id="customersTable">
+              <thead>
+                <tr>
+                  <th class="text-center" style="width: 50px;">#</th>
+                  <th>Child Name &amp; Age</th>
+                  <th>Parent Name</th>
+                  <th>Phone Number</th>
+                  <th>Wallet Balance</th>
+                  <th>Loyalty Points</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Add Customer Modal -->
+  <div class="modal fade adm-modal" id="addCustomerModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"><i class="bi bi-person-plus-fill me-2 adm-text-accent"></i>Register &amp; Check-In Child</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Step 1: Fast Search for Returning Customers -->
+          <div class="p-3 mb-4" style="background:rgba(37,99,235,0.03); border:1px solid rgba(37,99,235,0.12); border-radius:12px;">
+            <label class="adm-form-label fw-bold d-flex justify-content-between align-items-center mb-2" style="color:#1e293b;">
+              <span><i class="bi bi-search me-1 adm-text-accent"></i> Returning Customer Search</span>
+              <span class="badge bg-primary-subtle text-primary" style="font-size:0.72rem;font-weight:600;">Fast Check-In</span>
+            </label>
+            <div class="position-relative">
+              <input type="text" class="adm-form-control" id="checkinSearchInput" placeholder="Type Parent Phone, Child Name, or Parent Name..." autocomplete="off">
+              <div id="checkinSearchResults" class="list-group position-absolute w-100 shadow-lg mt-1" style="z-index: 1050; max-height: 240px; overflow-y: auto; display: none;"></div>
+            </div>
+            <small class="adm-text-muted d-block mt-1" style="font-size:0.75rem;">
+              Search existing customers to check-in with 1 click without creating duplicate records.
+            </small>
+          </div>
+
+          <!-- Existing Found Customer Card (hidden by default) -->
+          <div id="foundCustomerCardContainer" style="display:none;" class="mb-4"></div>
+
+          <!-- New Customer Registration Form Container -->
+          <div id="newCustomerFormContainer">
+            <p class="adm-text-secondary" style="font-size:0.78rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px;">
+              <i class="bi bi-person-plus-fill me-1 adm-text-accent"></i> Register New Customer Family
+            </p>
+            <form id="addCustomerForm">
+              <!-- CHILD DETAILS FIRST -->
+              <p class="adm-text-secondary" style="font-size:0.78rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-bottom:16px;">
+                <i class="bi bi-emoji-smile me-1 adm-text-accent"></i> Child Details
+              </p>
+              <div class="row g-3 mb-4">
+                <div class="col-md-6">
+                  <label class="adm-form-label">Child's First Name</label>
+                  <input type="text" class="adm-form-control" id="childFirstName" required placeholder="e.g. Vivaan">
+                </div>
+                <div class="col-md-6">
+                  <label class="adm-form-label">Child's Last Name</label>
+                  <input type="text" class="adm-form-control" id="childLastName" required placeholder="e.g. Sharma">
+                </div>
+                <div class="col-md-6">
+                  <label class="adm-form-label">Child's Date of Birth</label>
+                  <input type="date" class="adm-form-control" id="childDob" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="adm-form-label">Planned Play Duration (Check-In Session)</label>
+                  <select class="adm-form-select" id="childPlayDuration">
+                    <option value="60" selected>1 Hour — ₹250 (Standard Check-In)</option>
+                    <option value="90">1.5 Hours — ₹350</option>
+                    <option value="120">2 Hours — ₹450</option>
+                    <option value="180">3 Hours — ₹600</option>
+                    <option value="0">Registration Only (No Immediate Check-In)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div style="height:1px;background:var(--adm-border);margin-bottom:20px;"></div>
+
+              <!-- PARENT DETAILS SECOND -->
+              <p class="adm-text-secondary" style="font-size:0.78rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-bottom:16px;">
+                <i class="bi bi-person-circle me-1 adm-text-accent"></i> Parent Details
+              </p>
+              <div class="row g-3 mb-4">
+                <div class="col-md-6">
+                  <label class="adm-form-label">Parent's First Name</label>
+                  <input type="text" class="adm-form-control" id="custFirstName" required placeholder="e.g. Priya">
+                </div>
+                <div class="col-md-6">
+                  <label class="adm-form-label">Parent's Last Name</label>
+                  <input type="text" class="adm-form-control" id="custLastName" required placeholder="e.g. Sharma">
+                </div>
+                <div class="col-md-6">
+                  <label class="adm-form-label">Phone Number</label>
+                  <input type="tel" class="adm-form-control" id="custPhone" required placeholder="10-digit mobile">
+                </div>
+                <div class="col-md-6">
+                  <label class="adm-form-label">Initial Wallet Deposit (₹)</label>
+                  <input type="number" class="adm-form-control" id="custWallet" value="0" min="0">
+                </div>
+              </div>
+
+              <button type="submit" class="adm-btn adm-btn-primary w-100" style="justify-content:center; padding:12px;">
+                <i class="bi bi-person-check-fill me-1"></i> Register &amp; Check-In Child
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  <!-- Check-In Modal -->
+  <div class="modal fade adm-modal" id="checkinModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"><i class="bi bi-person-check me-2 adm-text-accent"></i>Check-In Child to Play Zone</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form id="adminCheckInForm">
+            <div class="adm-form-group">
+              <label class="adm-form-label">Select Registered Child</label>
+              <select class="adm-form-select" id="checkinChildSelect" required>
+                <!-- Populated dynamically -->
+              </select>
+            </div>
+            <div class="adm-form-group">
+              <label class="adm-form-label">Planned Play Duration</label>
+              <select class="adm-form-select" id="checkinDurationSelect" required>
+                <option value="60">1 Hour — ₹250</option>
+                <option value="90">1.5 Hours — ₹350</option>
+                <option value="120">2 Hours — ₹450</option>
+                <option value="180">3 Hours — ₹600</option>
+              </select>
+            </div>
+            <button type="submit" class="adm-btn adm-btn-primary w-100" style="justify-content:center; padding:12px;">
+              <i class="bi bi-person-check"></i> Confirm Check-In
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Child Profile Modal -->
+  <div class="modal fade adm-modal" id="childProfileModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header d-flex align-items-center justify-content-between">
+          <div class="d-flex align-items-center gap-3">
+            <div class="adm-avatar" id="profAvatar" style="width:48px;height:48px;font-size:1.1rem;background:linear-gradient(135deg,var(--adm-accent),var(--adm-purple));">CP</div>
+            <div>
+              <h5 class="modal-title mb-0" id="profChildName">Child Name Profile</h5>
+              <span class="adm-text-secondary small" id="profChildMeta">Age: — | Parent: —</span>
+            </div>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          
+          <!-- Key Info Grid -->
+          <div class="row g-3 mb-4">
+            <div class="col-md-3">
+              <div class="adm-info-panel h-100 p-3" style="background:rgba(37,99,235,0.04);border-radius:12px;border:1px solid rgba(37,99,235,0.12);">
+                <small class="adm-text-muted d-block text-uppercase fw-bold mb-1" style="font-size:0.68rem;letter-spacing:0.05em;">Date of Birth &amp; Age</small>
+                <div class="adm-fw-700 text-dark" id="profDobAge" style="font-size:0.95rem;">—</div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="adm-info-panel h-100 p-3" style="background:rgba(16,185,129,0.04);border-radius:12px;border:1px solid rgba(16,185,129,0.12);">
+                <small class="adm-text-muted d-block text-uppercase fw-bold mb-1" style="font-size:0.68rem;letter-spacing:0.05em;">Parent Contact</small>
+                <div class="adm-fw-700 text-dark" id="profParentPhone" style="font-size:0.95rem;">—</div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="adm-info-panel h-100 p-3" style="background:rgba(168,85,247,0.04);border-radius:12px;border:1px solid rgba(168,85,247,0.12);">
+                <small class="adm-text-muted d-block text-uppercase fw-bold mb-1" style="font-size:0.68rem;letter-spacing:0.05em;">Total Visits</small>
+                <div class="adm-fw-700 text-dark" id="profTotalVisits" style="font-size:0.95rem;">0 Visits</div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="adm-info-panel h-100 p-3" style="background:rgba(245,158,11,0.04);border-radius:12px;border:1px solid rgba(245,158,11,0.12);">
+                <small class="adm-text-muted d-block text-uppercase fw-bold mb-1" style="font-size:0.68rem;letter-spacing:0.05em;">Last Visit Date</small>
+                <div class="adm-fw-700 adm-text-accent" id="profLastVisitDate" style="font-size:0.95rem;">—</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Playzone Live Status & Action Card -->
+          <div class="adm-card p-3 mb-4" id="profPlayStatusCard" style="border:1.5px solid var(--adm-border);">
+            <!-- Rendered dynamically -->
+          </div>
+
+          <!-- Past Visit & Billing History Table -->
+          <div class="adm-card">
+            <div class="adm-card-header p-3">
+              <div class="adm-card-title mb-0" style="font-size:0.9rem;">
+                <i class="bi bi-clock-history me-1 adm-text-accent"></i> Play Zone Visit &amp; Billing History
+              </div>
+            </div>
+            <div class="adm-table-wrap">
+              <table class="adm-table text-nowrap" id="profHistoryTable">
+                <thead>
+                  <tr>
+                    <th class="text-center" style="width:50px;">#</th>
+                    <th>Date &amp; Check-In</th>
+                    <th>Duration Spent</th>
+                    <th>Total Bill Paid</th>
+                    <th>Payment Method</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- Dynamically filled -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="site-credit-bar">&copy; 2026 <span class="text-primary">Kids</span> <span class="text-secondary">FunZone</span>. All rights reserved. | Developed and maintained by <a href="https://www.idyllicservices.in/" target="_blank" rel="noopener" class="credit-brand">Idyllic Services Pvt. Ltd.</a></div>
+
+  <button type="button" id="backToTopBtn" class="back-to-top" aria-label="Back to top">
+    <i class="bi bi-arrow-up"></i>
+  </button>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/admin-auth-guard.js"></script>
+  <script src="../assets/js/admin.js"></script>
+  <script>
+    // Sidebar toggle
+    const sidebar = document.getElementById('admSidebar');
+    const overlay = document.getElementById('admOverlay');
+    document.getElementById('sidebarToggle').addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+      overlay.classList.toggle('active');
+    });
+    overlay.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+      overlay.classList.remove('active');
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderCustomersList();
+
+      if (window.location.search.includes('openModal=true')) {
+        const modalEl = document.getElementById('addCustomerModal');
+        if (modalEl && window.bootstrap) {
+          setTimeout(() => {
+            new bootstrap.Modal(modalEl).show();
+          }, 200);
+        }
+      }
+
+      const form = document.getElementById('addCustomerForm');
+      if (form) {
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const pId = Date.now();
+          const firstName  = document.getElementById('custFirstName').value;
+          const lastName   = document.getElementById('custLastName').value;
+          const phone      = document.getElementById('custPhone').value;
+          const walletBal  = parseFloat(document.getElementById('custWallet').value) || 0;
+          const childFirst = document.getElementById('childFirstName').value;
+          const childLast  = document.getElementById('childLastName').value;
+          const childDob   = document.getElementById('childDob').value;
+          const playDuration = parseInt(document.getElementById('childPlayDuration').value) || 0;
+
+          const custs = JSON.parse(localStorage.getItem('kfz_customers') || '[]');
+          custs.push({ id: pId, firstName, lastName, phone,
+            walletBalance: 0, loyaltyPoints: 0,
+            created: new Date().toISOString().split('T')[0] });
+          localStorage.setItem('kfz_customers', JSON.stringify(custs));
+
+          const children = JSON.parse(localStorage.getItem('kfz_children') || '[]');
+          const newChildId = Date.now() + 1;
+          children.push({ id: newChildId, parentId: pId,
+            firstName: childFirst, lastName: childLast, dob: childDob });
+          localStorage.setItem('kfz_children', JSON.stringify(children));
+
+          if (playDuration > 0) {
+            const checkins = JSON.parse(localStorage.getItem('kfz_checkins') || '[]');
+            const rateMap = { 60: 250, 90: 350, 120: 450, 180: 600 };
+            const baseAmount = rateMap[playDuration] || 250;
+            checkins.unshift({
+              id: Date.now() + 2,
+              childName: `${childFirst} ${childLast}`,
+              parentName: `${firstName} ${lastName}`,
+              checkInTime: new Date().toISOString(),
+              plannedDuration: playDuration,
+              baseAmount: baseAmount,
+              status: 'checked_in'
+            });
+            localStorage.setItem('kfz_checkins', JSON.stringify(checkins));
+          }
+
+          bootstrap.Modal.getInstance(document.getElementById('addCustomerModal')).hide();
+          form.reset();
+          renderCustomersList();
+
+          // Open newly created child profile
+          openChildProfile(newChildId);
+        });
+      }
+    });
+
+    function renderCustomersList() {
+      const tb = document.querySelector('#customersTable tbody');
+      if (!tb) return;
+      const customers = JSON.parse(localStorage.getItem('kfz_customers') || '[]');
+      const children  = JSON.parse(localStorage.getItem('kfz_children') || '[]');
+      
+      document.getElementById('customerCount').textContent =
+        `${children.length} registered child${children.length === 1 ? '' : 'ren'}`;
+
+      tb.innerHTML = '';
+      if (!children.length) {
+        tb.innerHTML = '<tr><td colspan="7" class="text-center adm-text-muted" style="padding:40px;">No children registered yet.</td></tr>';
+        return;
+      }
+
+      children.forEach((c, idx) => {
+        const p = customers.find(cust => cust.id === c.parentId) || { firstName: 'Parent', lastName: c.lastName, phone: '—', walletBalance: 0, loyaltyPoints: 0 };
+        const childAge = c.dob ? `${calcAge(c.dob)} yrs (DOB: ${c.dob})` : '—';
+        tb.innerHTML += `
+          <tr>
+            <td class="adm-fw-600 text-center" style="width: 50px;">${idx + 1}</td>
+            <td>
+              <div>
+                <a href="#" onclick="openChildProfile(${c.id}); return false;" class="adm-fw-700 text-decoration-none" style="cursor:pointer; color:#000000 !important;" title="Click to view full child profile">${c.firstName} ${c.lastName}</a>
+                <div class="adm-text-muted" style="font-size:0.75rem;">${childAge}</div>
+              </div>
+            </td>
+            <td class="adm-fw-600" style="color:#000000 !important;">${p.firstName} ${p.lastName}</td>
+            <td class="adm-text-secondary">${p.phone}</td>
+            <td><span class="adm-text-accent adm-fw-700">₹0.00</span></td>
+            <td><span class="adm-badge adm-badge-warning"><i class="bi bi-star-fill"></i> 0 pts</span></td>
+            <td>
+              <button class="adm-btn adm-btn-secondary adm-btn-sm" onclick="openChildProfile(${c.id})">
+                <i class="bi bi-person-badge"></i> Profile &amp; Bill
+              </button>
+            </td>
+          </tr>`;
+      });
+    }
+
+    function openChildProfile(childId) {
+      const children = JSON.parse(localStorage.getItem('kfz_children') || '[]');
+      const customers = JSON.parse(localStorage.getItem('kfz_customers') || '[]');
+      const checkins = JSON.parse(localStorage.getItem('kfz_checkins') || '[]');
+
+      const child = children.find(c => c.id === childId);
+      if (!child) return;
+
+      const parent = customers.find(p => p.id === child.parentId) || { firstName: 'Parent', lastName: child.lastName, phone: '—', walletBalance: 0 };
+      const fullName = `${child.firstName} ${child.lastName}`;
+      const parentName = `${parent.firstName} ${parent.lastName}`;
+
+      // Populate Header Info
+      const avatarEl = document.getElementById('profAvatar');
+      if (avatarEl) avatarEl.innerHTML = '<i class="bi bi-person-fill" style="font-size:1.3rem;color:#ffffff;"></i>';
+      
+      document.getElementById('profChildName').innerText = fullName;
+      document.getElementById('profChildMeta').innerText = `Age: ${calcAge(child.dob)} yrs | Parent: ${parentName}`;
+      document.getElementById('profDobAge').innerText = child.dob ? `${child.dob} (${calcAge(child.dob)} years old)` : 'Not specified';
+      document.getElementById('profParentPhone').innerText = `${parentName} (${parent.phone})`;
+
+      const childVisits = checkins.filter(c => c.childName.trim().toLowerCase() === fullName.trim().toLowerCase());
+      const totalVisitsCount = childVisits.length;
+      const lastVisitFormatted = totalVisitsCount > 0 
+        ? new Date(childVisits[0].checkInTime).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })
+        : 'First Visit';
+
+      if (document.getElementById('profTotalVisits')) document.getElementById('profTotalVisits').innerText = `${totalVisitsCount} Visit${totalVisitsCount === 1 ? '' : 's'}`;
+      if (document.getElementById('profLastVisitDate')) document.getElementById('profLastVisitDate').innerText = lastVisitFormatted;
+
+      // Live Playzone Status & Action Card
+      const playCard = document.getElementById('profPlayStatusCard');
+      const activeCheckin = checkins.find(c => c.childName.trim().toLowerCase() === fullName.trim().toLowerCase() && c.status === 'checked_in');
+
+      if (activeCheckin) {
+        const timeIn = new Date(activeCheckin.checkInTime);
+        const diffMins = Math.floor((new Date() - timeIn) / 60000);
+        const gracePeriod = 10;
+        const overtimeMins = Math.max(0, diffMins - activeCheckin.plannedDuration);
+        const overtimeCharge = overtimeMins > gracePeriod ? (overtimeMins * 5) : 0;
+        const runningBill = activeCheckin.baseAmount + overtimeCharge;
+
+        playCard.innerHTML = `
+          <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+            <div>
+              <span class="adm-badge adm-badge-live mb-2"><i class="bi bi-controller me-1"></i> CURRENTLY INSIDE PLAY ZONE</span>
+              <div class="adm-fw-700" style="font-size:1.05rem;">Time In: ${timeIn.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} (${diffMins} mins elapsed)</div>
+              <small class="adm-text-secondary">Planned: ${activeCheckin.plannedDuration} Mins | Running Bill: <strong class="adm-text-accent">₹${runningBill}</strong> (${overtimeMins > 0 ? overtimeMins + 'm overtime' : 'on time'})</small>
+            </div>
+            <button class="adm-btn adm-btn-primary" onclick="triggerCheckOut(${activeCheckin.id})" style="background:linear-gradient(135deg,var(--adm-emerald),#059669);">
+              <i class="bi bi-receipt-cutoff"></i> Process Check-Out &amp; Generate Bill
+            </button>
+          </div>
+        `;
+      } else {
+        playCard.innerHTML = `
+          <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+            <div>
+              <span class="adm-badge adm-badge-muted mb-2"><i class="bi bi-moon me-1"></i> NOT CURRENTLY PLAYING</span>
+              <div class="adm-fw-600">Child is registered and idle outside the play zone.</div>
+            </div>
+            <button class="adm-btn adm-btn-primary" onclick="quickCheckInChild('${fullName}', '${parentName}')">
+              <i class="bi bi-person-check"></i> Start New Check-In Play Session
+            </button>
+          </div>
+        `;
+      }
+
+      // Past Visits & Billing History
+      const histTable = document.querySelector('#profHistoryTable tbody');
+      if (histTable) {
+        const childVisits = checkins.filter(c => c.childName.trim().toLowerCase() === fullName.trim().toLowerCase());
+        histTable.innerHTML = '';
+        if (childVisits.length === 0) {
+          histTable.innerHTML = '<tr><td colspan="6" class="text-center adm-text-muted py-3">No play zone visits logged yet for this child.</td></tr>';
+        } else {
+          childVisits.forEach((v, vIdx) => {
+            const vTime = new Date(v.checkInTime).toLocaleDateString([], { day: 'numeric', month: 'short', year: 'numeric' }) + ' ' + new Date(v.checkInTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            const vStatus = v.status === 'checked_in' ? '<span class="adm-badge adm-badge-accent">Active Playing</span>' : '<span class="adm-badge adm-badge-success">Completed</span>';
+            const payMethod = v.paymentMethod ? v.paymentMethod.toUpperCase() : (v.status === 'checked_in' ? 'RUNNING' : 'CASH');
+
+            histTable.innerHTML += `
+              <tr>
+                <td class="text-center adm-fw-600">${vIdx + 1}</td>
+                <td>${vTime}</td>
+                <td>${v.actualDuration || v.plannedDuration} Mins</td>
+                <td class="adm-fw-700 adm-text-accent">₹${v.totalAmount || v.baseAmount}</td>
+                <td><span class="adm-badge adm-badge-muted">${payMethod}</span></td>
+                <td>${vStatus}</td>
+              </tr>
+            `;
+          });
+        }
+      }
+
+      const modalEl = document.getElementById('childProfileModal');
+      const bsModal = new bootstrap.Modal(modalEl);
+      bsModal.show();
+    }
+
+    function quickCheckInChild(childName, parentName) {
+      const modalEl = document.getElementById('childProfileModal');
+      const bsModal = bootstrap.Modal.getInstance(modalEl);
+      if (bsModal) bsModal.hide();
+
+      const checkins = JSON.parse(localStorage.getItem('kfz_checkins') || '[]');
+      checkins.unshift({
+        id: Date.now(),
+        childName: childName,
+        parentName: parentName,
+        checkInTime: new Date().toISOString(),
+        plannedDuration: 60,
+        baseAmount: 250,
+        status: 'checked_in'
+      });
+      localStorage.setItem('kfz_checkins', JSON.stringify(checkins));
+      renderCustomersList();
+      alert(`Check-in session started for ${childName}!`);
+    }
+
+    function calcAge(dob) {
+      if (!dob) return 0;
+      const d = new Date(dob), t = new Date();
+      let a = t.getFullYear() - d.getFullYear();
+      if (t.getMonth() - d.getMonth() < 0 || (t.getMonth() === d.getMonth() && t.getDate() < d.getDate())) a--;
+      return Math.max(0, a);
+    }
+  </script>
+</body>
+</html>

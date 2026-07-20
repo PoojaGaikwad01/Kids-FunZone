@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn about Kids FunZone, our story, safe indoor play environment, mission, and why parents choose us for active kids entertainment.">
+    <title>About Our Magic Play Center | Kids FunZone</title>
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Custom Style -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body style="background-color: var(--background);">
+
+    <!-- Header / Navbar -->
+    <nav class="navbar navbar-expand-lg glass-navbar fixed-top py-1">
+        <div class="container">
+            <a class="navbar-brand fw-bold d-flex align-items-center gap-2 text-primary fs-4" href="index.html">
+                <!-- Cute Mascot Icon beside Logo -->
+                <svg class="mascot-icon" width="34" height="34" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="45" fill="#FFC83D" stroke="#2D3748" stroke-width="4"/>
+                    <circle cx="20" cy="20" r="15" fill="#FF6B9A" stroke="#2D3748" stroke-width="4"/>
+                    <circle cx="80" cy="20" r="15" fill="#FF6B9A" stroke="#2D3748" stroke-width="4"/>
+                    <circle cx="20" cy="20" r="8" fill="#FFFDF8"/>
+                    <circle cx="80" cy="20" r="8" fill="#FFFDF8"/>
+                    <circle cx="35" cy="45" r="7" fill="#2D3748"/>
+                    <circle cx="65" cy="45" r="7" fill="#2D3748"/>
+                    <circle cx="32" cy="42" r="3" fill="#FFFDF8"/>
+                    <circle cx="62" cy="42" r="3" fill="#FFFDF8"/>
+                    <circle cx="25" cy="60" r="6" fill="#FF6B9A" opacity="0.6"/>
+                    <circle cx="75" cy="60" r="6" fill="#FF6B9A" opacity="0.6"/>
+                    <ellipse cx="50" cy="55" rx="8" ry="5" fill="#FFFDF8" stroke="#2D3748" stroke-width="3"/>
+                    <circle cx="50" cy="53" r="3" fill="#2D3748"/>
+                    <path d="M45 62 Q50 67 55 62" stroke="#2D3748" stroke-width="3" stroke-linecap="round" fill="none"/>
+                </svg>
+                <span class="font-heading" style="font-family: var(--font-head); font-weight: 700;">Kids <span class="text-secondary">FunZone</span></span>
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto gap-2 align-items-center fw-bold font-heading">
+                    <li class="nav-item"><a class="nav-link text-dark" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active text-primary" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark" href="services.html">Services Zones</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark" href="birthday.html">Birthdays</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark" href="membership.html">Passes</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark" href="gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark" href="contact.html">Contact Us</a></li>
+                    <li class="nav-item ms-lg-3">
+                        <a class="btn btn-primary text-white d-flex align-items-center gap-2 px-4 py-2 border-pill shadow-glow" href="login.html" target="_blank" rel="noopener">
+                            <i class="bi bi-person-circle"></i> Staff Portal
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Floating Background Elements for Hero -->
+    <div style="position: absolute; width: 100%; height: 100vh; overflow: hidden; pointer-events: none; z-index: 1;">
+        <!-- Clouds -->
+        <svg class="floating-bg floating-cloud" style="top: 15%; left: 3%; width: 104px;" viewBox="0 0 100 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 40 A12 12 0 0 1 32 24 A18 18 0 0 1 68 24 A12 12 0 0 1 80 40 A8 8 0 0 1 72 48 L28 48 A8 8 0 0 1 20 40 Z" fill="#FFEBF0" opacity="0.85"/>
+        </svg>
+        <svg class="floating-bg floating-cloud" style="top: 22%; right: 4%; width: 120px; animation-duration: 22s;" viewBox="0 0 100 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 40 A12 12 0 0 1 32 24 A18 18 0 0 1 68 24 A12 12 0 0 1 80 40 A8 8 0 0 1 72 48 L28 48 A8 8 0 0 1 20 40 Z" fill="#E8F1FF" opacity="0.85"/>
+        </svg>
+        <!-- Balloon -->
+        <svg class="floating-bg floating-balloon" style="top: 40%; left: 8%; width: 40px;" viewBox="0 0 60 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="30" cy="40" rx="20" ry="25" fill="#FFC83D" opacity="0.85"/>
+            <path d="M30 65 L27 72 L33 72 Z" fill="#FFC83D"/>
+            <path d="M30 72 Q28 82 32 92" stroke="#718096" stroke-width="1.5" fill="none"/>
+        </svg>
+        <!-- Stars -->
+        <svg class="floating-bg floating-star" style="top: 15%; left: 45%; width: 22px;" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="#7F48FF" opacity="0.6"/>
+        </svg>
+    </div>
+
+    <!-- Hero Section -->
+
+
+    <!-- Hero Section -->
+    <section class="hero-section d-flex align-items-center" style="position: relative;">
+        <div class="container hero-content">
+            <div class="row align-items-center g-5">
+                <!-- Left Side content -->
+                <div class="col-lg-6 text-center text-lg-start" data-aos="fade-right">
+                    <span class="badge badge-premium badge-warning-light mb-3 border-pill px-3 py-2" style="font-weight: 700; color: #9A7200;">WELCOME TO ADVENTURE</span>
+                    <h1 class="display-3 fw-bold mb-4 font-heading" style="line-height: 1.15; color: var(--text-primary); font-size: clamp(2.2rem, 5vw, 3.6rem);">
+                        Where Every Smile Becomes an <span class="text-primary">Adventure</span>
+                    </h1>
+                    <p class="lead text-secondary mb-5 mx-auto mx-lg-0" style="font-size: 1.05rem; font-weight: 500; line-height: 1.6; max-width: 560px;">
+                        We believe in creating unforgettable childhood memories filled with active exploration, creative workshops, and deep social bonding. Step into Chhatrapati Sambhajinagar's premium safe play zone!
+                    </p>
+                    <div class="d-flex flex-column flex-sm-row justify-content-center justify-content-lg-start gap-3">
+                        <a href="services.html" class="btn btn-primary btn-lg px-4 py-2 border-pill shadow-sm">Explore Activities</a>
+                        <a href="birthday.html" class="btn btn-secondary btn-lg px-4 py-2 border-pill shadow-glow">Book Your Visit</a>
+                    </div>
+                </div>
+                <!-- Right Side image + balloons decorations -->
+                <div class="col-lg-6" style="position: relative;" data-aos="fade-left" data-aos-delay="200">
+                    <!-- Floating balloon near image -->
+                    <div class="floating-bg floating-balloon" style="top: -20px; right: 20px; z-index: 10; width: 48px;">
+                        <svg viewBox="0 0 60 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <ellipse cx="30" cy="40" rx="20" ry="25" fill="#FF3B76" opacity="0.85"/>
+                            <path d="M30 65 L27 72 L33 72 Z" fill="#FF3B76"/>
+                        </svg>
+                    </div>
+                    <div class="hero-video-wrapper p-0 overflow-hidden" style="border-radius: var(--radius-lg); border: 8px solid var(--surface); box-shadow: var(--shadow-lg);">
+                        <img src="assets/images/gallery_play_1.png" alt="Indian children playing happily in Kids FunZone" class="img-fluid w-100" style="height: 380px; object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section id="story-section" class="py-section" style="background-color: var(--background); position: relative;">
+        <!-- Dotted Path Background Connection -->
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; opacity: 0.1; z-index: 1;">
+            <svg width="100%" height="100%" viewBox="0 0 1440 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M100 0 C 400 300, 200 600, 800 800" stroke="#FF3B76" stroke-width="4" stroke-dasharray="10 15" fill="none"/>
+            </svg>
+        </div>
+        
+        <div class="container py-4" style="position: relative; z-index: 2;">
+            <div class="section-title" data-aos="fade-up">
+                <span class="badge badge-premium badge-success-light mb-3 border-pill px-3 py-2" style="font-weight: 700;">OUR HISTORY</span>
+                <h2 class="text-primary font-heading fw-bold">The Journey of Kids FunZone</h2>
+                <p class="text-secondary" style="font-size: 1.15rem; font-weight: 500;">How a small bubble of an idea expanded into a magical indoor adventure playground.</p>
+            </div>
+            
+            <div class="row align-items-center g-5 mt-3">
+                <!-- Left side story image -->
+                <div class="col-lg-6" data-aos="fade-right">
+                    <img src="assets/images/hero_playground.png"
+                        alt="Indian kids playing inside active play zone structure" class="img-fluid shadow-lg"
+                        style="border-radius: var(--radius-lg); border: 8px solid var(--surface); height: 480px; object-fit: cover; width: 100%;">
+                </div>
+                <!-- Right side timeline milestones -->
+                <div class="col-lg-6">
+                    <div class="about-timeline">
+                        <!-- Milestone 1 -->
+                        <div class="timeline-card" data-aos="fade-left" data-aos-delay="100">
+                            <span class="timeline-badge"><i class="bi bi-stars"></i></span>
+                            <h5 class="fw-bold font-heading text-primary mb-2">Dream Started (2020)</h5>
+                            <p class="small text-secondary mb-0">We imagined a vibrant, air-conditioned active soft play playground where kids can learn coordination and families can bond safely.</p>
+                        </div>
+                        <!-- Milestone 2 -->
+                        <div class="timeline-card" data-aos="fade-left" data-aos-delay="200">
+                            <span class="timeline-badge"><i class="bi bi-hammer"></i></span>
+                            <h5 class="fw-bold font-heading text-primary mb-2">FunZone Created (2022)</h5>
+                            <p class="small text-secondary mb-0">Our flagship location in Seven Hills, Chhatrapati Sambhajinagar was born, featuring massive multi-level slides, trampolines, and custom toddler arenas.</p>
+                        </div>
+                        <!-- Milestone 3 -->
+                        <div class="timeline-card" data-aos="fade-left" data-aos-delay="300">
+                            <span class="timeline-badge"><i class="bi bi-emoji-smile"></i></span>
+                            <h5 class="fw-bold font-heading text-primary mb-2">Thousands of Happy Kids (2024)</h5>
+                            <p class="small text-secondary mb-0">Welcomed over 50,000+ smiling children and managed over 1,200+ themed birthday celebrations filled with laughter.</p>
+                        </div>
+                        <!-- Milestone 4 -->
+                        <div class="timeline-card" data-aos="fade-left" data-aos-delay="400">
+                            <span class="timeline-badge"><i class="bi bi-heart-fill"></i></span>
+                            <h5 class="fw-bold font-heading text-primary mb-2">Growing Every Day (2026)</h5>
+                            <p class="small text-secondary mb-0">Continually introducing clean interactive sensors, pretend-play layouts, and expanding to new active zones across cities.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Vision Section -->
+    <section class="py-section" style="background-color: var(--background-alt); position: relative;">
+        <div class="container py-4 mt-3" style="position: relative; z-index: 2;">
+            <div class="row g-4">
+                <!-- Mission Card -->
+                <div class="col-md-6" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="glass-card glass-card-primary">
+                        <div class="d-flex align-items-center gap-3 mb-4">
+                            <div class="why-icon" style="background: rgba(127, 72, 255, 0.1); color: var(--purple); width: 64px; height: 64px; margin: 0; font-size: 1.75rem;">
+                                <i class="bi bi-rocket-takeoff-fill"></i>
+                            </div>
+                            <h3 class="fw-bold font-heading mb-0 text-primary">Our Mission</h3>
+                        </div>
+                        <p class="text-secondary" style="font-size: 1.15rem; font-weight: 500; line-height: 1.7;">
+                            To design, build, and maintain world-class indoor play frameworks that stimulate active physical wellness, cognitive learning, and parent peace of mind. We aim to ensure children interact, exercise, and cultivate positive childhood developments through supervised soft-frame play.
+                        </p>
+                    </div>
+                </div>
+                <!-- Vision Card -->
+                <div class="col-md-6" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="glass-card glass-card-secondary">
+                        <div class="d-flex align-items-center gap-3 mb-4">
+                            <div class="why-icon" style="background: rgba(255, 159, 28, 0.1); color: var(--accent); width: 64px; height: 64px; margin: 0; font-size: 1.75rem;">
+                                <i class="bi bi-eye-fill"></i>
+                            </div>
+                            <h3 class="fw-bold font-heading mb-0 text-secondary">Our Vision</h3>
+                        </div>
+                        <p class="text-secondary" style="font-size: 1.15rem; font-weight: 500; line-height: 1.7;">
+                            To establish Kids FunZone as India's premier multi-city network of edutainment zones, building happy, active communities and introducing secure, tech-enabled soft play structures in 20+ metropolitan locations by 2030.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Parents Love Section -->
+    <section class="py-section" style="background-color: var(--background); position: relative;">
+        <div class="container py-4">
+            <div class="section-title" data-aos="fade-up">
+                <span class="badge badge-premium badge-primary-light mb-3 border-pill px-3 py-2" style="font-weight: 700; color: #1D54B8;">BUILDING TRUST</span>
+                <h2 class="text-primary font-heading fw-bold">Why Parents Love Kids FunZone</h2>
+                <p class="text-secondary" style="font-size: 1.15rem; font-weight: 500;">Providing safe environments for kids to burn energy and parents to relax.</p>
+            </div>
+            
+            <div class="row g-4 justify-content-center mt-3">
+                <!-- Card 1 -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="why-card why-safe">
+                        <div class="why-icon" style="background: rgba(46, 121, 245, 0.1); color: var(--primary);"><i class="bi bi-shield-fill-check"></i></div>
+                        <h4 class="fw-bold font-heading mb-3">Safe &amp; Secure</h4>
+                        <p class="text-secondary small mb-0">Double gated check-in locks, strict parent-child tags, and fully padded soft frames protect every kid.</p>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="why-card why-equip">
+                        <div class="why-icon" style="background: rgba(255, 59, 118, 0.1); color: var(--secondary);"><i class="bi bi-gift"></i></div>
+                        <h4 class="fw-bold font-heading mb-3">Premium Equipment</h4>
+                        <p class="text-secondary small mb-0">Sourced globally, hypoallergenic, and daily sanitized play platforms designed for durability.</p>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="why-card why-creative">
+                        <div class="why-icon" style="background: rgba(255, 159, 28, 0.1); color: var(--accent);"><i class="bi bi-palette-fill"></i></div>
+                        <h4 class="fw-bold font-heading mb-3">Learning Through Play</h4>
+                        <p class="text-secondary small mb-0">Sensory boards, puzzle blocks, and roleplay setups designed to stimulate cognitive abilities.</p>
+                    </div>
+                </div>
+                <!-- Card 4 -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="why-card why-party">
+                        <div class="why-icon" style="background: rgba(16, 231, 178, 0.1); color: var(--mint);"><i class="bi bi-cake2-fill"></i></div>
+                        <h4 class="fw-bold font-heading mb-3">Birthday Parties</h4>
+                        <p class="text-secondary small mb-0">Specialized themes, cake ceremonies, puppet shows, MC hosts, and private banquet spaces.</p>
+                    </div>
+                </div>
+                <!-- Card 5 -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
+                    <div class="why-card why-cafe">
+                        <div class="why-icon" style="background: rgba(127, 72, 255, 0.1); color: var(--purple);"><i class="bi bi-cup-hot-fill"></i></div>
+                        <h4 class="fw-bold font-heading mb-3">Comfortable Parent Café</h4>
+                        <p class="text-secondary small mb-0">Free WiFi, work-friendly tables, premium coffee, and total soundproof glass viewing panels.</p>
+                    </div>
+                </div>
+                <!-- Card 6 -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
+                    <div class="why-card why-staff">
+                        <div class="why-icon" style="background: rgba(46, 121, 245, 0.1); color: var(--primary);"><i class="bi bi-people-fill"></i></div>
+                        <h4 class="fw-bold font-heading mb-3">Friendly Staff</h4>
+                        <p class="text-secondary small mb-0">Certified first-aid marshals monitoring the multi-level frames to ensure orderly fun.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Collage Section -->
+    <section class="py-section" style="background: var(--gradient-primary); position: relative; overflow: hidden;">
+        <!-- Floating bubble decorations -->
+        <div class="floating-bubble" style="top: 10%; left: 10%; width: 40px; height: 40px;"></div>
+        <div class="floating-bubble" style="bottom: 15%; right: 12%; width: 60px; height: 60px; animation-delay: 3s;"></div>
+
+        <div class="container py-4" style="position: relative; z-index: 2;">
+            <div class="row align-items-center g-5">
+                <!-- Left text -->
+                <div class="col-lg-6 text-white" data-aos="fade-right">
+                    <span class="badge badge-premium mb-3 border-pill px-3 py-2" style="background: rgba(255, 255, 255, 0.25); color: #fff; font-weight: 700;">IMMERSIVE PLAYTIME</span>
+                    <h2 class="display-5 fw-bold font-heading mb-4 text-white">Experience Magical Childhood Moments</h2>
+                    <p class="lead mb-4 font-body" style="font-weight: 500; opacity: 0.95; line-height: 1.7;">
+                        Watch children slide, bounce, imagine, and build friendships. Our environment coordinates active games, craft workshops, trampolines, and pretend town centers under one air-conditioned zone.
+                    </p>
+                    <a href="services.html" class="btn btn-light btn-lg border-pill text-primary" style="font-weight: 700; background: var(--surface); box-shadow: var(--shadow-glow);">Explore Attractions Zone</a>
+                </div>
+                <!-- Right Overlapping Scrapbook Photo Collage -->
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="scrapbook-collage">
+                        <!-- Collage Image 1 -->
+                        <img src="assets/images/gallery_play_1.png" alt="Indian child crawling inside foam tunnels" class="collage-img collage-1">
+                        <!-- Collage Image 2 -->
+                        <img src="assets/images/gallery_activities_1.png" alt="Indian children coloring graphics" class="collage-img collage-2">
+                        <!-- Collage Image 3 -->
+                        <img src="assets/images/gallery_play_2.png" alt="Kids sliding into ball pool" class="collage-img collage-3">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fun Statistics Section -->
+    <section class="py-section bg-white-panel" style="background-color: var(--background); position: relative;">
+        <div class="container">
+            <div class="stats-container text-center" data-aos="fade-up">
+                <div class="row g-4 justify-content-center">
+                    <!-- Stat 1 -->
+                    <div class="col-md-3 col-6">
+                        <div class="stat-circle">
+                            <span class="stat-emoji"><i class="bi bi-emoji-smile"></i></span>
+                            <div class="stat-number" data-count="50000" data-suffix="+">50,000+</div>
+                        </div>
+                        <h6 class="fw-bold font-heading text-secondary">Happy Kids</h6>
+                    </div>
+                    <!-- Stat 2 -->
+                    <div class="col-md-3 col-6">
+                        <div class="stat-circle">
+                            <span class="stat-emoji"><i class="bi bi-cake2-fill"></i></span>
+                            <div class="stat-number" data-count="1200" data-suffix="+">1,200+</div>
+                        </div>
+                        <h6 class="fw-bold font-heading text-secondary">Birthday Parties</h6>
+                    </div>
+                    <!-- Stat 3 -->
+                    <div class="col-md-3 col-6">
+                        <div class="stat-circle">
+                            <span class="stat-emoji"><i class="bi bi-star-fill"></i></span>
+                            <div class="stat-number" data-count="4.9" data-decimal="true" data-suffix="">4.9</div>
+                        </div>
+                        <h6 class="fw-bold font-heading text-secondary">Parent Rating</h6>
+                    </div>
+                    <!-- Stat 4 -->
+                    <div class="col-md-3 col-6">
+                        <div class="stat-circle">
+                            <span class="stat-emoji"><i class="bi bi-balloon-fill"></i></span>
+                            <div class="stat-number" data-count="25" data-suffix="+">25+</div>
+                        </div>
+                        <h6 class="fw-bold font-heading text-secondary">Exciting Activities</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Safety Promise Section -->
+    <section class="py-section" style="background-color: var(--background-alt); position: relative;">
+        <div class="container py-4">
+            <div class="section-title" data-aos="fade-up">
+                <span class="badge badge-premium badge-danger-light mb-3 border-pill px-3 py-2" style="font-weight: 700;">SECURE PLAY GUARANTEE</span>
+                <h2 class="text-primary font-heading fw-bold">Our Safety Promise</h2>
+                <p class="text-secondary" style="font-size: 1.15rem; font-weight: 500;">Five pillars of protection engineered for structural security and sanitation.</p>
+            </div>
+            
+            <div class="row g-4 mt-3 justify-content-center">
+                <!-- Card 1 -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="safety-card text-center" style="border: 2px solid rgba(83, 216, 181, 0.25);">
+                        <div class="safety-icon-wrapper mx-auto"><i class="bi bi-droplet-fill"></i></div>
+                        <h5 class="fw-bold font-heading mb-2">Daily Sanitization</h5>
+                        <p class="small text-secondary mb-0">Hypoallergenic fogging cleanses ball pits twice daily for maximum hygiene.</p>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="safety-card text-center" style="border: 2px solid rgba(255, 159, 28, 0.25);">
+                        <div class="safety-icon-wrapper mx-auto"><i class="bi bi-border-style"></i></div>
+                        <h5 class="fw-bold font-heading mb-2">Soft Flooring</h5>
+                        <p class="small text-secondary mb-0">EVA high-impact safety cushioning avoids skin friction and absorbs falls.</p>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="safety-card text-center" style="border: 2px solid rgba(46, 121, 245, 0.25);">
+                        <div class="safety-icon-wrapper mx-auto"><i class="bi bi-camera-video-fill"></i></div>
+                        <h5 class="fw-bold font-heading mb-2">CCTV Monitoring</h5>
+                        <p class="small text-secondary mb-0">Continuous camera supervision with feeds visible directly in the cafe.</p>
+                    </div>
+                </div>
+                <!-- Card 4 -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="safety-card text-center" style="border: 2px solid rgba(127, 72, 255, 0.25);">
+                        <div class="safety-icon-wrapper mx-auto"><i class="bi bi-stars"></i></div>
+                        <h5 class="fw-bold font-heading mb-2">Safe Play Equipment</h5>
+                        <p class="small text-secondary mb-0">Fire-retardant structures checked daily by engineering marshals.</p>
+                    </div>
+                </div>
+                <!-- Card 5 -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
+                    <div class="safety-card text-center" style="border: 2px solid rgba(255, 59, 118, 0.25);">
+                        <div class="safety-icon-wrapper mx-auto"><i class="bi bi-heart-pulse-fill"></i></div>
+                        <h5 class="fw-bold font-heading mb-2">Certified Staff</h5>
+                        <p class="small text-secondary mb-0">First-aid and child psychology trained play directors watching frames.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Parents' Corner -->
+    <section class="py-section bg-white-panel" style="background-color: var(--background); position: relative;">
+        <div class="container py-4">
+            <div class="row align-items-center g-5">
+                <!-- Left side café image -->
+                <div class="col-lg-6" data-aos="fade-right">
+                    <img src="assets/images/gallery_cafe_2.png"
+                        alt="Parents enjoying gourmet coffee watching kids play" class="img-fluid shadow-lg"
+                        style="border-radius: var(--radius-lg); border: 8px solid var(--surface); height: 440px; object-fit: cover; width: 100%;">
+                </div>
+                <!-- Right side café content details -->
+                <div class="col-lg-6" data-aos="fade-left">
+                    <span class="badge badge-premium badge-warning-light mb-3 border-pill px-3 py-2" style="font-weight: 700; color: #9A7200;">COFFEE &amp; RECHARGING</span>
+                    <h2 class="text-primary font-heading fw-bold fs-1">Parents' Corner Café</h2>
+                    <p class="text-secondary mb-4" style="font-size: 1.15rem; font-weight: 500; line-height: 1.7;">
+                        Take a deep breath and unwind. Our comfortable parent cafe features double-pane soundproof viewing screens, letting you monitor your child playing happily while enjoying freshly brewed coffees, healthy snacks, and high-speed Wi-Fi.
+                    </p>
+                    <!-- Cafe features bullet check lists -->
+                    <div class="row g-3 mb-4">
+                        <div class="col-sm-6 d-flex align-items-center gap-2">
+                            <span class="text-accent fs-4"><i class="bi bi-cup-hot-fill"></i></span>
+                            <span class="fw-bold text-dark font-heading">Gourmet Espresso</span>
+                        </div>
+                        <div class="col-sm-6 d-flex align-items-center gap-2">
+                            <span class="text-accent fs-4"><i class="bi bi-cookie"></i></span>
+                            <span class="fw-bold text-dark font-heading">Healthy Snack Bites</span>
+                        </div>
+                        <div class="col-sm-6 d-flex align-items-center gap-2">
+                            <span class="text-accent fs-4"><i class="bi bi-wifi"></i></span>
+                            <span class="fw-bold text-dark font-heading">High-Speed WiFi</span>
+                        </div>
+                        <div class="col-sm-6 d-flex align-items-center gap-2">
+                            <span class="text-accent fs-4"><i class="bi bi-heart-pulse-fill"></i></span>
+                            <span class="fw-bold text-dark font-heading">Relaxing Ambience</span>
+                        </div>
+                    </div>
+                    <a href="services.html" class="btn btn-outline-primary border-pill px-4 py-2">Explore Café Menu</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kids Moments Gallery Section -->
+    <section class="py-section" style="background-color: var(--background-alt); position: relative;">
+        <div class="container py-4">
+            <div class="section-title" data-aos="fade-up">
+                <span class="badge badge-premium badge-purple mb-3 border-pill px-3 py-2" style="font-weight: 700; background-color: #ECE7FF; color: #553C9A;">KIDS DIARY</span>
+                <h2 class="text-primary font-heading fw-bold">Moments of Joy</h2>
+                <p class="text-secondary" style="font-size: 1.15rem; font-weight: 500;">Capture snaps of active slides, blocks, trampoline jumps, and creative drawings.</p>
+            </div>
+            
+            <!-- Masonry Grid -->
+            <div class="masonry-grid mt-4" data-aos="fade-up" data-aos-delay="100">
+                <!-- Item 1 -->
+                <div class="masonry-item gallery-item">
+                    <img src="assets/images/gallery_play_2.png" alt="Giant slide into the ball pit">
+                    <div class="masonry-overlay">
+                        <div class="masonry-overlay-content">
+                            <span class="fs-3"><i class="bi bi-zoom-in"></i></span>
+                            <p class="fw-bold font-heading mb-0 mt-2">Ball Pit slides</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Item 2 -->
+                <div class="masonry-item gallery-item">
+                    <img src="assets/images/about_safety.png" alt="Active play frames obstacle bridges">
+                    <div class="masonry-overlay">
+                        <div class="masonry-overlay-content">
+                            <span class="fs-3"><i class="bi bi-zoom-in"></i></span>
+                            <p class="fw-bold font-heading mb-0 mt-2">Obstacle Bridge</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Item 3 -->
+                <div class="masonry-item gallery-item">
+                    <img src="assets/images/gallery_birthday_1.png" alt="Themed birthday cake slicing ceremony">
+                    <div class="masonry-overlay">
+                        <div class="masonry-overlay-content">
+                            <span class="fs-3"><i class="bi bi-zoom-in"></i></span>
+                            <p class="fw-bold font-heading mb-0 mt-2">Birthday Parties</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Item 4 -->
+                <div class="masonry-item gallery-item">
+                    <img src="assets/images/gallery_activities_1.png" alt="Kids crafting together">
+                    <div class="masonry-overlay">
+                        <div class="masonry-overlay-content">
+                            <span class="fs-3"><i class="bi bi-zoom-in"></i></span>
+                            <p class="fw-bold font-heading mb-0 mt-2">Creative Art Room</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Item 5 -->
+                <div class="masonry-item gallery-item">
+                    <img src="assets/images/gallery_activities_2.png" alt="Building massive block designs">
+                    <div class="masonry-overlay">
+                        <div class="masonry-overlay-content">
+                            <span class="fs-3"><i class="bi bi-zoom-in"></i></span>
+                            <p class="fw-bold font-heading mb-0 mt-2">LEGO Architecture</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Item 6 -->
+                <div class="masonry-item gallery-item">
+                    <img src="assets/images/hero_playground.png" alt="Padded trampoline bouncing jumps">
+                    <div class="masonry-overlay">
+                        <div class="masonry-overlay-content">
+                            <span class="fs-3"><i class="bi bi-zoom-in"></i></span>
+                            <p class="fw-bold font-heading mb-0 mt-2">Trampolines</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Item 7 -->
+                <div class="masonry-item gallery-item">
+                    <img src="assets/images/gallery_play_1.png" alt="Toddler climbing obstacle stairs">
+                    <div class="masonry-overlay">
+                        <div class="masonry-overlay-content">
+                            <span class="fs-3"><i class="bi bi-zoom-in"></i></span>
+                            <p class="fw-bold font-heading mb-0 mt-2">Obstacle Crawl</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Item 8 -->
+                <div class="masonry-item gallery-item">
+                    <img src="assets/images/gallery_events_1.png" alt="Family moments and events inside premium play zone">
+                    <div class="masonry-overlay">
+                        <div class="masonry-overlay-content">
+                            <span class="fs-3"><i class="bi bi-zoom-in"></i></span>
+                            <p class="fw-bold font-heading mb-0 mt-2">Family Memories</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-section bg-white-panel" style="background-color: var(--background); position: relative;">
+        <div class="container py-4">
+            <div class="section-title" data-aos="fade-up">
+                <span class="badge badge-premium badge-success-light mb-3 border-pill px-3 py-2" style="font-weight: 700;">VISITORS REVIEW</span>
+                <h2 class="text-primary font-heading fw-bold">Testimonials from Parents</h2>
+                <p class="text-secondary" style="font-size: 1.15rem; font-weight: 500;">See why mothers and fathers trust Kids FunZone for active play times and birthdays.</p>
+            </div>
+            
+            <!-- Testimonials Carousel Slider -->
+            <div id="testimonialCarousel" class="carousel slide mt-4" data-bs-ride="carousel" data-bs-interval="2000" data-aos="fade-up" data-aos-delay="100">
+                <!-- Indicators -->
+                <div class="carousel-indicators" style="bottom: -50px;">
+                    <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1" style="background-color: var(--secondary); width: 12px; height: 12px; border-radius: 50%; border: none;"></button>
+                    <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="1" aria-label="Slide 2" style="background-color: var(--secondary); width: 12px; height: 12px; border-radius: 50%; border: none;"></button>
+                    <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="2" aria-label="Slide 3" style="background-color: var(--secondary); width: 12px; height: 12px; border-radius: 50%; border: none;"></button>
+                    <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="3" aria-label="Slide 4" style="background-color: var(--secondary); width: 12px; height: 12px; border-radius: 50%; border: none;"></button>
+                    <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="4" aria-label="Slide 5" style="background-color: var(--secondary); width: 12px; height: 12px; border-radius: 50%; border: none;"></button>
+                </div>
+                
+                <!-- Slides -->
+                <div class="carousel-inner pb-5">
+                    <!-- Slide 1 -->
+                    <div class="carousel-item active">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-6 col-md-8">
+                                <div class="speech-bubble-card" style="background-color: #F3F8FF; margin-bottom: 15px;">
+                                    <p class="text-secondary italic mb-0" style="font-size: 1.05rem; font-weight: 500;">
+                                        "Extremely clean and secure. The double lock safety gates give me complete peace of mind, and Vivaan absolutely loves the multi-lane tube slide!"
+                                    </p>
+                                </div>
+                                <div class="testimonial-user d-flex align-items-center gap-3">
+                                    <div class="avatar rounded-circle d-flex align-items-center justify-content-center fw-bold"
+                                        style="width: 48px; height: 48px; background: var(--gradient-btn-primary); color: #fff;">
+                                        RS
+                                    </div>
+                                    <div>
+                                        <h6 class="mb-0 fw-bold font-heading text-dark">Rishi Sharma</h6>
+                                        <small class="text-secondary">Parent of Vivaan (5 yrs)</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="carousel-item">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-6 col-md-8">
+                                <div class="speech-bubble-card" style="background-color: #FFF2F6; margin-bottom: 15px;">
+                                    <p class="text-secondary italic mb-0" style="font-size: 1.05rem; font-weight: 500;">
+                                        "The birthday party host was brilliant. They managed everything from balloons to food box cleanups. I could actually sit and talk to other parents."
+                                    </p>
+                                </div>
+                                <div class="testimonial-user d-flex align-items-center gap-3">
+                                    <div class="avatar rounded-circle d-flex align-items-center justify-content-center fw-bold"
+                                        style="width: 48px; height: 48px; background: var(--gradient-btn-secondary); color: #fff;">
+                                        PP
+                                    </div>
+                                    <div>
+                                        <h6 class="mb-0 fw-bold font-heading text-dark">Priya Patel</h6>
+                                        <small class="text-secondary">Parent of Ishaan (7 yrs)</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="carousel-item">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-6 col-md-8">
+                                <div class="speech-bubble-card" style="background-color: #FFFBF0; margin-bottom: 15px;">
+                                    <p class="text-secondary italic mb-0" style="font-size: 1.05rem; font-weight: 500;">
+                                        "I love their toddler corner. The padding is thick and the sensory step walls keep Mira thoroughly engaged. Best indoor playground!"
+                                    </p>
+                                </div>
+                                <div class="testimonial-user d-flex align-items-center gap-3">
+                                    <div class="avatar rounded-circle d-flex align-items-center justify-content-center fw-bold"
+                                        style="width: 48px; height: 48px; background: linear-gradient(135deg, #FFC83D 0%, #FF6B9A 100%); color: #fff;">
+                                        AS
+                                    </div>
+                                    <div>
+                                        <h6 class="mb-0 fw-bold font-heading text-dark">Ananya Sen</h6>
+                                        <small class="text-secondary">Parent of Mira (3 yrs)</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slide 4 -->
+                    <div class="carousel-item">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-6 col-md-8">
+                                <div class="speech-bubble-card" style="background-color: #F0FDF4; margin-bottom: 15px;">
+                                    <p class="text-secondary italic mb-0" style="font-size: 1.05rem; font-weight: 500;">
+                                        "My son loves the adventure climbing wall! The staff are extremely supportive and alert, encouraging him every step of the way."
+                                    </p>
+                                </div>
+                                <div class="testimonial-user d-flex align-items-center gap-3">
+                                    <div class="avatar rounded-circle d-flex align-items-center justify-content-center fw-bold"
+                                        style="width: 48px; height: 48px; background: linear-gradient(135deg, #33B864 0%, #00A7E1 100%); color: #fff;">
+                                        RM
+                                    </div>
+                                    <div>
+                                        <h6 class="mb-0 fw-bold font-heading text-dark">Rohan Malhotra</h6>
+                                        <small class="text-secondary">Parent of Aarav (6 yrs)</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slide 5 -->
+                    <div class="carousel-item">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-6 col-md-8">
+                                <div class="speech-bubble-card" style="background-color: #FDF4FF; margin-bottom: 15px;">
+                                    <p class="text-secondary italic mb-0" style="font-size: 1.05rem; font-weight: 500;">
+                                        "We booked a weekday passes play package. Great pricing, extremely hygienic, and the café mocha is top-tier for working parents."
+                                    </p>
+                                </div>
+                                <div class="testimonial-user d-flex align-items-center gap-3">
+                                    <div class="avatar rounded-circle d-flex align-items-center justify-content-center fw-bold"
+                                        style="width: 48px; height: 48px; background: linear-gradient(135deg, #AC2A98 0%, #FF3366 100%); color: #fff;">
+                                        SG
+                                    </div>
+                                    <div>
+                                        <h6 class="mb-0 fw-bold font-heading text-dark">Sneha Gupta</h6>
+                                        <small class="text-secondary">Parent of Kabir (4 yrs)</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Controls -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev" style="width: 5%; opacity: 0.85;">
+                    <span class="fs-1 text-primary"><i class="bi bi-arrow-left-circle-fill"></i></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next" style="width: 5%; opacity: 0.85;">
+                    <span class="fs-1 text-primary"><i class="bi bi-arrow-right-circle-fill"></i></span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="py-section text-center text-white" style="background: var(--gradient-secondary); position: relative; overflow: hidden;">
+        <!-- SVGs of Clouds and Confetti for CTA Decor -->
+        <div style="position: absolute; top: 15%; left: 5%; opacity: 0.15;">
+            <svg width="120" height="70" viewBox="0 0 100 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 40 A12 12 0 0 1 32 24 A18 18 0 0 1 68 24 A12 12 0 0 1 80 40 L20 40 Z" fill="#FFF"/>
+            </svg>
+        </div>
+        <div style="position: absolute; bottom: 15%; right: 5%; opacity: 0.15;">
+            <!-- Rainbow SVGs -->
+            <svg width="150" height="80" viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 50 A 40 40 0 0 1 90 50" stroke="#FFF" stroke-width="8" fill="none"/>
+                <path d="M20 50 A 30 30 0 0 1 80 50" stroke="#FFF" stroke-width="8" fill="none"/>
+            </svg>
+        </div>
+        <div class="container py-4" style="position: relative; z-index: 2;" data-aos="zoom-in">
+            <h2 class="display-5 fw-bold font-heading mb-3 text-white">Ready for Your Child's Next Adventure?</h2>
+            <p class="lead mb-5 mx-auto" style="max-width: 600px; font-weight: 600; opacity: 0.9;">
+                Reserve your tickets today or contact our team for customized school tours and birthday decorations.
+            </p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="birthday.html" class="btn btn-light btn-lg px-5 py-2 border-pill"
+                    style="background: var(--surface) !important; color: var(--secondary) !important; font-weight: 700; border: none; box-shadow: 0 8px 25px rgba(255, 107, 154, 0.4);">
+                    Book Now
+                </a>
+                <a href="contact.html" class="btn btn-light btn-lg px-5 py-2 border-pill"
+                    style="background: var(--surface) !important; color: var(--secondary) !important; font-weight: 700; border: none; box-shadow: 0 8px 25px rgba(255, 107, 154, 0.4);">
+                    Contact Us
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Meadow Illustration -->
+    <div class="footer-meadow" aria-hidden="true">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <!-- Back hill -->
+            <path d="M0,80 C150,40 350,100 600,70 C850,40 1050,90 1200,60 L1200,120 L0,120 Z" fill="#DEF7EC" opacity="0.6"></path>
+            <!-- Front hill -->
+            <path d="M0,100 C200,60 400,110 650,85 C900,60 1000,105 1200,80 L1200,120 L0,120 Z" fill="#BFF4DC"></path>
+        </svg>
+    </div>
+
+    <!-- Footer -->
+    <footer class="website-footer">
+        <div class="container">
+            <div class="row g-4 mb-5">
+                <div class="col-lg-4 col-md-6">
+                    <a class="fw-bold d-flex align-items-center gap-2 text-decoration-none fs-4 mb-3" href="index.html">
+                        <svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="50" r="45" fill="#FFC83D" stroke="#2D3748" stroke-width="4"/>
+                            <circle cx="20" cy="20" r="15" fill="#FF6B9A" stroke="#2D3748" stroke-width="4"/>
+                            <circle cx="80" cy="20" r="15" fill="#FF6B9A" stroke="#2D3748" stroke-width="4"/>
+                            <circle cx="20" cy="20" r="8" fill="#FFFDF8"/>
+                            <circle cx="80" cy="20" r="8" fill="#FFFDF8"/>
+                            <circle cx="35" cy="45" r="7" fill="#2D3748"/>
+                            <circle cx="65" cy="45" r="7" fill="#2D3748"/>
+                            <ellipse cx="50" cy="55" rx="8" ry="5" fill="#FFFDF8"/>
+                            <circle cx="50" cy="53" r="3" fill="#2D3748"/>
+                        </svg>
+                        <span class="font-heading" style="color: #03543F;">Kids <span class="text-secondary">FunZone</span></span>
+                    </a>
+                    <p id="footerTagline" class="text-secondary small mb-4" style="line-height: 1.7;">
+                        Chhatrapati Sambhajinagar's leading active soft play zone and café, engineering happy memories for families with supreme safety regulations.
+                    </p>
+                    <div class="d-flex gap-16px">
+                        <a href="#" id="footerFacebookLink" class="fs-4 text-decoration-none" style="color: #03543F;"><i class="bi bi-facebook"></i></a>
+                        <a href="#" id="footerInstagramLink" class="fs-4 text-decoration-none" style="color: #03543F;"><i class="bi bi-instagram"></i></a>
+                        <a href="#" id="footerYoutubeLink" class="fs-4 text-decoration-none" style="color: #03543F;"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 col-sm-6">
+                    <h5 class="fw-bold font-heading">Quick Links</h5>
+                    <ul class="list-unstyled d-flex flex-column gap-8px small mt-3">
+                        <li><a class="text-decoration-none" href="index.html">Home</a></li>
+                        <li><a class="text-decoration-none" href="about.html">About</a></li>
+                        <li><a class="text-decoration-none" href="services.html">Services Zones</a></li>
+                        <li><a class="text-decoration-none" href="gallery.html">Gallery</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 col-sm-6">
+                    <h5 class="fw-bold font-heading">Packages</h5>
+                    <ul class="list-unstyled d-flex flex-column gap-8px small mt-3">
+                        <li><a class="text-decoration-none" href="birthday.html">Birthdays</a></li>
+                        <li><a class="text-decoration-none" href="membership.html">Passes</a></li>
+                        <li><a class="text-decoration-none" href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="fw-bold font-heading">Contact Info</h5>
+                    <ul class="list-unstyled small mt-3 text-secondary d-flex flex-column gap-12px">
+                        <li><i class="bi bi-geo-alt-fill me-2" style="color: #03543F;"></i><span id="footerAddress"> Motiwala Nagar, Seven Hills, Chhatrapati Sambhajinagar</span></li>
+                        <li><i class="bi bi-telephone-fill me-2" style="color: #03543F;"></i><span id="footerPhone"> +91 98230 12345</span></li>
+                        <li><i class="bi bi-envelope-fill me-2" style="color: #03543F;"></i><span id="footerEmail"> fun@kidsfunzone.in</span></li>
+                        <li><a href="404.html" class="text-decoration-none text-secondary"><i class="bi bi-shield-lock-fill me-2" style="color: #03543F;"></i>Privacy Rules</a></li>
+                        <li><a href="#" class="text-decoration-none text-secondary" data-bs-toggle="modal" data-bs-target="#termsModal"><i class="bi bi-file-earmark-text-fill me-2" style="color: #03543F;"></i>Terms &amp; Conditions</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="site-credit-bar">&copy; 2026 <span class="text-primary">Kids</span> <span class="text-secondary">FunZone</span>. All rights reserved. | Developed and maintained by <a href="https://www.idyllicservices.in/" target="_blank" rel="noopener" class="credit-brand">Idyllic Services Pvt. Ltd.</a></div>
+
+    <!-- Back to top button -->
+    <button type="button" id="backToTopBtn" class="back-to-top" aria-label="Back to top">
+        <i class="bi bi-arrow-up"></i>
+    </button>
+
+    <!-- Lightbox Modal -->
+    <div class="modal fade lightbox-modal" id="lightboxModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <button type="button" class="lightbox-close-btn" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="bi bi-x-lg"></i>
+                    </button>
+                    <img src="" alt="" class="img-fluid lightbox-img">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terms of Service Modal -->
+    <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content border-0 shadow-lg" style="border-radius: var(--radius-lg);">
+                <div class="modal-header bg-gradient-primary text-white p-4"
+                    style="border-top-left-radius: var(--radius-lg); border-top-right-radius: var(--radius-lg);">
+                    <h5 class="modal-title fw-bold font-heading fs-4 d-flex align-items-center gap-2"
+                        id="termsModalLabel">
+                        <i class="bi bi-file-earmark-text-fill"></i> Terms &amp; Conditions
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4"
+                    style="max-height: 60vh; overflow-y: auto; font-family: var(--font-body); text-align: left;">
+                    <p class="lead fw-bold text-dark mb-4">Welcome to Tanwani's Kids FunZone. Please read our play pass
+                        terms and conditions carefully:</p>
+
+                    <div class="mb-4">
+                        <h6 class="fw-bold text-primary mb-2 font-heading"><i class="bi bi-clock-history"></i> 1. Pass
+                            Validity &amp; Expiry</h6>
+                        <ul class="text-secondary small ps-3">
+                            <li class="mb-1"><strong>5 Hours Pass:</strong> Strictly valid for <strong>15 days</strong>
+                                from the date of purchase.</li>
+                            <li class="mb-1"><strong>10 Hours Pass:</strong> Strictly valid for <strong>20 days</strong>
+                                from the date of purchase.</li>
+                            <li class="mb-1"><strong>15 Hours Pass:</strong> Strictly valid for <strong>25 days</strong>
+                                from the date of purchase.</li>
+                            <li class="mb-1"><strong>30 Hours Pass:</strong> Strictly valid for <strong>45 days</strong>
+                                from the date of purchase.</li>
+                            <li class="mb-1">Unused playtime hours will expire automatically upon completion of the
+                                validity period. Expiry dates cannot be extended, and unused credits are non-refundable.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="mb-4">
+                        <h6 class="fw-bold text-secondary mb-2 font-heading"><i class="bi bi-people-fill"></i> 2. Pass
+                            Sharing Policy</h6>
+                        <ul class="text-secondary small ps-3">
+                            <li class="mb-1"><strong>5 Hours Pass:</strong> Valid for a single child only.
+                                Non-shareable.</li>
+                            <li class="mb-1"><strong>10 &amp; 15 Hours Passes:</strong> Can be shared by a maximum of
+                                <strong>2 children</strong>.</li>
+                            <li class="mb-1"><strong>30 Hours Pass:</strong> Can be shared by a maximum of <strong>3
+                                    children</strong>.</li>
+                            <li class="mb-1">Siblings or friends must be registered under the same pass at the check-in
+                                desk to share hours.</li>
+                        </ul>
+                    </div>
+
+                    <div class="mb-4">
+                        <h6 class="fw-bold text-warning mb-2 font-heading"><i class="bi bi-person-check-fill"></i> 3.
+                            Parent Accompanying Rules</h6>
+                        <ul class="text-secondary small ps-3">
+                            <li class="mb-1">Children must be accompanied by at least one adult guardian at the check-in
+                                desk.</li>
+                            <li class="mb-1"><strong>15 Hours Pass</strong> includes free entry for <strong>1 adult
+                                    parent/guardian</strong> per session.</li>
+                            <li class="mb-1"><strong>30 Hours Pass</strong> includes free entry for <strong>2 adult
+                                    parents/guardians</strong> per session.</li>
+                            <li class="mb-1">For other passes, standard parent entry charges apply.</li>
+                        </ul>
+                    </div>
+
+                    <div class="mb-4">
+                        <h6 class="fw-bold text-success mb-2 font-heading"><i class="bi bi-shield-fill-check"></i> 4.
+                            Play Zone Safety &amp; Hygiene</h6>
+                        <ul class="text-secondary small ps-3">
+                            <li class="mb-1">Grip socks are mandatory for all children and parents inside the play
+                                arena. Grip socks can be purchased at the reception counter.</li>
+                            <li class="mb-1">Outside food and beverages are strictly prohibited inside the play zones
+                                and cafe.</li>
+                            <li class="mb-1">Kids FunZone is not responsible for any personal injury or loss of
+                                belongings inside the premises.</li>
+                        </ul>
+                    </div>
+
+                    <div class="mb-0">
+                        <h6 class="fw-bold text-danger mb-2 font-heading"><i
+                                class="bi bi-exclamation-triangle-fill"></i> 5. Cancellation &amp; Refund</h6>
+                        <ul class="text-secondary small ps-3 mb-0">
+                            <li class="mb-1">All playtime packages and pass purchases are final and non-refundable.</li>
+                            <li class="mb-1">Pass credits cannot be redeemed for cash or transferred to another account.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="modal-footer p-3 bg-light"
+                    style="border-bottom-left-radius: var(--radius-lg); border-bottom-right-radius: var(--radius-lg);">
+                    <button type="button" class="btn btn-primary px-4" data-bs-dismiss="modal">I Understand</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Init AOS -->
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+    </script>
+    <!-- Custom JS -->
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
